@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YARDLINES — Globally Managed Solutions</title>
+    <link rel="icon" type="image/png" href="Asserts/yardlines%20logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        yardblue: '#0066ff',
+                        yardnavy: '#0b0f19',
+                        yardcard: '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #0f172a;
+        }
+
+        .glass-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark-glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Milestone Card Animation Classes */
+        .milestone-card {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            z-index: 10;
+        }
+
+        .milestone-card.active-step {
+            border-color: #3b82f6;
+            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.25);
+            transform: translateY(-8px) scale(1.03);
+            background-color: #ffffff;
+        }
+
+        .milestone-card.active-step .icon-container {
+            background-color: #eff6ff !important;
+            color: #2563eb !important;
+            transform: scale(1.15) rotate(4deg);
+        }
+
+        .milestone-card.active-step .step-number {
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .icon-container {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .step-number {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-blue-600 selection:text-white">
+
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all duration-300"
+        id="navbar">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3">
+                <img src="Asserts/yardlines%20logo.png" alt="Yardlines Logo" class="h-14
+                 w-auto object-contain">
+            </a>
+
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="#solutions" class="hover:text-blue-600 transition-colors">Solutions</a>
+                <a href="#industries" class="hover:text-blue-600 transition-colors">Industries</a>
+                <a href="#how-it-works" class="hover:text-blue-600 transition-colors">How We Work</a>
+                <a href="#why-us" class="hover:text-blue-600 transition-colors">Why Yardlines</a>
+                <a href="#playbook" class="hover:text-blue-600 transition-colors">Resources</a>
+                <a href="#about" class="hover:text-blue-600 transition-colors">About Us</a>
+            </nav>
+
+            <div class="flex items-center space-x-5">
+                <a href="#quote"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2.5 rounded-full text-xs shadow-md shadow-blue-500/20 transition-all transform hover:-translate-y-0.5 flex items-center">
+                    Get a Quote
+                </a>
+                <button id="menu-btn" class="lg:hidden text-slate-700 hover:text-black p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3 shadow-lg">
+            <a href="#solutions" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Solutions</a>
+            <a href="#industries" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Industries</a>
+            <a href="#how-it-works" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">How We Work</a>
+            <a href="#why-us" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Why Yardlines</a>
+            <a href="#resources" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Resources</a>
+        </div>
+    </header>
+
+    <section class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-blue-50/40 via-white to-white">
+        <div
+            class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div
+                    class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-blue-200 bg-blue-50/80 text-blue-700 text-xs font-semibold uppercase tracking-wider">
+                    <span>Globally managed, impact delivered.</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+                    Build globally.<br>
+                    Operate <span class="text-blue-600">smarter.</span>
+                </h1>
+                <p class="text-base sm:text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                    Yardlines helps businesses scale technology, finance and business operations with globally managed
+                    teams and outcome-focused solutions.
+                </p>
+                <div
+                    class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4 pt-2">
+                    <a href="#quote"
+                        class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold px-7 py-3.5 rounded-full text-sm shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+                        <span>Get a Quote</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#solutions"
+                        class="w-full sm:w-auto bg-white hover:bg-slate-50 text-slate-800 font-semibold px-7 py-3.5 rounded-full text-sm border border-slate-200 transition-all flex items-center justify-center space-x-2">
+                        <span>Explore Solutions</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-blue-600"></i>
+                    </a>
+                </div>
+
+                <div
+                    class="pt-8 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl mx-auto lg:mx-0 text-xs text-slate-600 font-medium">
+                    <div class="flex items-center space-x-2 justify-center lg:justify-start">
+                        <i data-lucide="globe" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
+                        <span>Global Delivery</span>
+                    </div>
+                    <div class="flex items-center space-x-2 justify-center lg:justify-start">
+                        <i data-lucide="award" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
+                        <span>Domain Expertise</span>
+                    </div>
+                    <div class="flex items-center space-x-2 justify-center lg:justify-start">
+                        <i data-lucide="users" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
+                        <span>Scalable Teams</span>
+                    </div>
+                    <div class="flex items-center space-x-2 justify-center lg:justify-start">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-blue-600 flex-shrink-0"></i>
+                        <span>Secure & Compliant</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 relative flex items-center justify-center">
+                <div class="relative w-full max-w-[480px]">
+                    <div class="relative rounded-3xl p-4 flex items-center justify-center">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-blue-500/10 via-transparent to-cyan-400/10 rounded-full blur-2xl">
+                        </div>
+                        <img src="tech_globe.jpg" alt="Yardlines Global Delivery Network Globe"
+                            class="w-full h-auto object-contain rounded-full drop-shadow-2xl relative z-10 mix-blend-multiply">
+
+                        <div
+                            class="absolute top-[28%] left-[10%] bg-white/90 backdrop-blur border border-slate-200 text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center space-x-1 z-20">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span><span>North America</span>
+                        </div>
+                        <div
+                            class="absolute top-[18%] left-[45%] bg-white/90 backdrop-blur border border-slate-200 text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center space-x-1 z-20">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span><span>UK</span>
+                        </div>
+                        <div
+                            class="absolute top-[28%] left-[34%] bg-white/90 backdrop-blur border border-slate-200 text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center space-x-1 z-20">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span><span>Europe</span>
+                        </div>
+                        <div
+                            class="absolute top-[42%] left-[48%] bg-white/90 backdrop-blur border border-slate-200 text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center space-x-1 z-20">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span><span>Middle East</span>
+                        </div>
+                        <div
+                            class="absolute top-[38%] left-[66%] bg-blue-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-lg flex items-center space-x-1 ring-4 ring-blue-500/20 z-20">
+                            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span><span>India</span>
+                        </div>
+                        <div
+                            class="absolute top-[52%] left-[72%] bg-white/90 backdrop-blur border border-slate-200 text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center space-x-1 z-20">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span><span>Singapore</span>
+                        </div>
+                        <div
+                            class="absolute bottom-[24%] right-[12%] bg-white/90 backdrop-blur border border-slate-200 text-slate-800 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center space-x-1 z-20">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span><span>Australia</span>
+                        </div>
+
+                        <div
+                            class="absolute bottom-4 right-4 bg-white/95 backdrop-blur border border-slate-200 p-3.5 rounded-2xl shadow-xl space-y-1">
+                            <div class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Delivery
+                                Excellence</div>
+                            <div class="text-xl font-extrabold text-slate-900 flex items-center space-x-2">
+                                <span>99.8%</span>
+                                <i data-lucide="trending-up" class="w-4 h-4 text-emerald-500"></i>
+                            </div>
+                            <div class="text-[10px] text-emerald-600 font-medium">On-time Delivery</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="solutions" class="py-24 bg-slate-50/50 border-t border-slate-100 relative overflow-hidden">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest block">What Can Yardlines Do?</span>
+                <h3 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">One partner. Multiple capabilities.</h3>
+                <p class="text-slate-600 text-sm max-w-xl mx-auto leading-relaxed">
+                    Select a capability to explore our deep service catalog. Click any service to view delivery models, timelines, and playbooks.
+                </p>
+            </div>
+
+            <!-- Capability Tabs (Horizontal Navigation) -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-12 border-b border-slate-200/60 pb-6">
+                <button onclick="switchTab('tech')" id="tab-tech" class="px-6 py-3 rounded-full text-sm font-bold border border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-500/10 hover:scale-105 transition-all cursor-pointer flex items-center space-x-2">
+                    <i data-lucide="code" class="w-4 h-4"></i>
+                    <span>Technology</span>
+                </button>
+                <button onclick="switchTab('finance')" id="tab-finance" class="px-6 py-3 rounded-full text-sm font-semibold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer flex items-center space-x-2">
+                    <i data-lucide="credit-card" class="w-4 h-4"></i>
+                    <span>Finance & Accounting</span>
+                </button>
+                <button onclick="switchTab('ops')" id="tab-ops" class="px-6 py-3 rounded-full text-sm font-semibold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer flex items-center space-x-2">
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                    <span>Business Operations</span>
+                </button>
+                <button onclick="switchTab('teams')" id="tab-teams" class="px-6 py-3 rounded-full text-sm font-semibold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer flex items-center space-x-2">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                    <span>Dedicated Teams</span>
+                </button>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="solutions-content" class="min-h-[300px]">
+                <!-- DYNAMIC CONTENT INJECTED BY JAVASCRIPT -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Yardlines Section -->
+    <section id="why-us" class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest block">Why Yardlines</span>
+                <h3 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Built for businesses that care about control.</h3>
+                <p class="text-slate-600 text-sm max-w-xl mx-auto leading-relaxed">
+                    Offshore operations shouldn't mean a loss of oversight. Yardlines bridges the gap with specialized talent and local managed delivery.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-3xl space-y-4 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="globe-2" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Global Talent</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Access a vast pool of pre-screened technical, financial, and administrative talent in India, unconstrained by local hiring shortages.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass-card p-8 rounded-3xl space-y-4 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="shield" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Managed Delivery</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        We manage the delivery, training, and operational layer locally, ensuring output matches your standards without day-to-day management overhead.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass-card p-8 rounded-3xl space-y-4 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="check-square" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Quality Control</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Every process is documented with clear SLA guidelines, daily QA checks, performance monitoring dashboards, and error-prevention checks.
+                    </p>
+                </div>
+                <!-- Card 4 -->
+                <div class="glass-card p-8 rounded-3xl space-y-4 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="lock" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Security & Trust</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Data protection is our priority. We sign NDAs, mandate secure virtual machine environments, enforce access controls, and use isolated local networks.
+                    </p>
+                </div>
+                <!-- Card 5 -->
+                <div class="glass-card p-8 rounded-3xl space-y-4 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Scalability</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Start small with a single dedicated specialist or a 2-person pilot team. Dynamically scale the pod upwards as your workload requirements expand.
+                    </p>
+                </div>
+                <!-- Card 6 -->
+                <div class="glass-card p-8 rounded-3xl space-y-4 hover:-translate-y-1 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="eye" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Transparent Engagement</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        No hidden costs or complex contracts. You get transparent pricing, direct communication with your team, and real-time activity reporting.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries" class="py-24 bg-slate-50/30 border-t border-slate-100">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest block">Who We Serve</span>
+                <h3 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Tailored Solutions for Global Industries</h3>
+                <p class="text-slate-600 text-sm max-w-xl mx-auto leading-relaxed">
+                    We support ambitious businesses across key global sectors. Select your industry to view custom outsourcing playbooks and operational pods.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Industry 1 -->
+                <div onclick="openIndustryDetails('saas')" class="glass-card p-8 rounded-3xl space-y-4 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer group">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:scale-110 transition-all">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">SaaS & Technology</h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Scale development velocity, automate QA testing, and outsource customer support ticket pipelines.
+                    </p>
+                    <div class="text-blue-600 font-bold text-xs flex items-center space-x-1 pt-2">
+                        <span>View Playbook</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+                <!-- Industry 2 -->
+                <div onclick="openIndustryDetails('financial')" class="glass-card p-8 rounded-3xl space-y-4 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer group">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-all">
+                        <i data-lucide="landmark" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Financial Services</h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        High-compliance back-office support, transaction audit reconciliation, and KYC customer onboarding.
+                    </p>
+                    <div class="text-blue-600 font-bold text-xs flex items-center space-x-1 pt-2">
+                        <span>View Playbook</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+                <!-- Industry 3 -->
+                <div onclick="openIndustryDetails('accounting')" class="glass-card p-8 rounded-3xl space-y-4 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer group">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center group-hover:scale-110 transition-all">
+                        <i data-lucide="calculator" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Professional Services</h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Extend advisory capacity with white-label bookkeeping, tax preparation review, and transactional accounting.
+                    </p>
+                    <div class="text-blue-600 font-bold text-xs flex items-center space-x-1 pt-2">
+                        <span>View Playbook</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+                <!-- Industry 4 -->
+                <div onclick="openIndustryDetails('ecommerce')" class="glass-card p-8 rounded-3xl space-y-4 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer group">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center group-hover:scale-110 transition-all">
+                        <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">E-commerce & Retail</h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Manage high sales volumes, inventory ledger entry, vendor payouts, and multichannel customer helpdesks.
+                    </p>
+                    <div class="text-blue-600 font-bold text-xs flex items-center space-x-1 pt-2">
+                        <span>View Playbook</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+                <!-- Industry 5 -->
+                <div onclick="openIndustryDetails('logistics')" class="glass-card p-8 rounded-3xl space-y-4 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer group">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center group-hover:scale-110 transition-all">
+                        <i data-lucide="truck" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Logistics & Transport</h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Digitize dispatch sheets, carrier invoice logs, bills of lading, and accounts receivable matching.
+                    </p>
+                    <div class="text-blue-600 font-bold text-xs flex items-center space-x-1 pt-2">
+                        <span>View Playbook</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+                <!-- Industry 6 -->
+                <div onclick="openIndustryDetails('startups')" class="glass-card p-8 rounded-3xl space-y-4 hover:border-blue-500 hover:shadow-lg transition-all cursor-pointer group">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center group-hover:scale-110 transition-all">
+                        <i data-lucide="rocket" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">Startups & Scaleups</h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">
+                        Preserve your startup runway. Build offshore pods handling software engineering, bookkeeping, and operations.
+                    </p>
+                    <div class="text-blue-600 font-bold text-xs flex items-center space-x-1 pt-2">
+                        <span>View Playbook</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-950 text-white relative overflow-hidden">
+        <div
+            class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none">
+        </div>
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+                <!-- Left Column: Content -->
+                <div class="lg:col-span-5 space-y-6 text-center lg:text-left">
+                    <span class="text-xs font-semibold text-blue-400 uppercase tracking-widest block">Global Reach.
+                        Local Understanding.</span>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.15]">
+                        One world.<br>
+                        Many possibilities.
+                    </h2>
+                    <p class="text-slate-400 text-sm max-w-md mx-auto lg:mx-0 leading-relaxed font-normal">
+                        We combine global delivery capabilities with local market understanding to help businesses scale
+                        with confidence.
+                    </p>
+                    <div class="pt-2 flex justify-center lg:justify-start">
+                        <a href="#quote"
+                            class="inline-flex items-center space-x-2 text-xs font-semibold text-blue-400 border border-blue-500/30 bg-blue-500/10 px-5.5 py-2.5 rounded-full hover:bg-blue-500/20 hover:border-blue-400 transition-all">
+                            <span>Explore Global Delivery</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Map Image + SVG Overlay -->
+                <div class="lg:col-span-7 relative flex items-center justify-center">
+                    <div
+                        class="w-full relative aspect-[1376/768] rounded-2xl overflow-hidden border border-slate-800/50 shadow-2xl bg-slate-950/40 backdrop-blur-sm">
+                        <!-- Blank dot matrix map -->
+                        <img src="clean_map.jpg" alt="Yardlines Global Connectivity Map"
+                            class="w-full h-full absolute inset-0 object-cover opacity-40">
+
+                        <!-- SVG paths & nodes overlaid on top -->
+                        <svg viewBox="0 0 1376 768" class="absolute inset-0 w-full h-full z-10 pointer-events-none"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <filter id="mapGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="3" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+                            <!-- Connection Arcs -->
+                            <path d="M 910 410 Q 645 100 380 200" stroke="#3b82f6" stroke-width="1.5"
+                                stroke-dasharray="4 4" class="opacity-70" />
+                            <path d="M 910 410 Q 665 130 420 270" stroke="#3b82f6" stroke-width="1.5"
+                                stroke-dasharray="4 4" class="opacity-70" />
+                            <path d="M 910 410 Q 690 320 470 480" stroke="#3b82f6" stroke-width="1.5"
+                                stroke-dasharray="4 4" class="opacity-70" />
+                            <path d="M 910 410 Q 792 250 675 220" stroke="#3b82f6" stroke-width="1.5"
+                                stroke-dasharray="4 4" class="opacity-70" />
+                            <path d="M 910 410 Q 815 280 720 245" stroke="#3b82f6" stroke-width="1.5"
+                                class="opacity-70" />
+                            <path d="M 910 410 Q 865 370 820 350" stroke="#3b82f6" stroke-width="1.5"
+                                class="opacity-70" />
+                            <path d="M 910 410 Q 950 440 990 490" stroke="#3b82f6" stroke-width="1.5"
+                                class="opacity-70" />
+                            <path d="M 910 410 Q 1035 505 1160 600" stroke="#3b82f6" stroke-width="1.5"
+                                class="opacity-70" />
+
+                            <!-- UK Node & Label -->
+                            <circle cx="675" cy="220" r="4" fill="#3b82f6" filter="url(#mapGlow)" />
+                            <circle cx="675" cy="220" r="2" fill="#ffffff" />
+                            <text x="687" y="224" fill="#e2e8f0" font-size="11" font-weight="bold"
+                                font-family="'Plus Jakarta Sans', sans-serif">UK</text>
+
+                            <!-- Europe Node & Label -->
+                            <circle cx="720" cy="245" r="4" fill="#3b82f6" filter="url(#mapGlow)" />
+                            <circle cx="720" cy="245" r="2" fill="#ffffff" />
+                            <text x="732" y="249" fill="#e2e8f0" font-size="11" font-weight="bold"
+                                font-family="'Plus Jakarta Sans', sans-serif">Europe</text>
+
+                            <!-- Middle East Node & Label -->
+                            <circle cx="820" cy="350" r="4" fill="#3b82f6" filter="url(#mapGlow)" />
+                            <circle cx="820" cy="350" r="2" fill="#ffffff" />
+                            <text x="832" y="354" fill="#e2e8f0" font-size="11" font-weight="bold"
+                                font-family="'Plus Jakarta Sans', sans-serif">Middle East</text>
+
+                            <!-- United States Node & Label -->
+                            <circle cx="420" cy="270" r="4" fill="#3b82f6" filter="url(#mapGlow)" />
+                            <circle cx="420" cy="270" r="2" fill="#ffffff" />
+                            <text x="432" y="274" fill="#e2e8f0" font-size="11" font-weight="bold"
+                                font-family="'Plus Jakarta Sans', sans-serif">United States</text>
+
+                            <!-- Canada Node & Label -->
+                            <circle cx="380" cy="200" r="4" fill="#3b82f6" filter="url(#mapGlow)" />
+                            <circle cx="380" cy="200" r="2" fill="#ffffff" />
+                            <text x="392" y="204" fill="#e2e8f0" font-size="11" font-weight="bold"
+                                font-family="'Plus Jakarta Sans', sans-serif">Canada</text>
+
+                            <!-- South America Node & Label -->
+                            <circle cx="470" cy="480" r="4" fill="#3b82f6" filter="url(#mapGlow)" />
+                            <circle cx="470" cy="480" r="2" fill="#ffffff" />
+                            <text x="482" y="484" fill="#e2e8f0" font-size="11" font-weight="bold"
+                                font-family="'Plus Jakarta Sans', sans-serif">South America</text>
+
+                            <!-- India Core Hub Node & Label -->
+                            <circle cx="910" cy="410" r="8" fill="#3b82f6" opacity="0.4" filter="url(#mapGlow)" />
+                            <circle cx="910" cy="410" r="5" fill="#3b82f6" />
+                            <circle cx="910" cy="410" r="2" fill="#ffffff" />
+                            <text x="925" y="414" fill="#ffffff" font-size="12" font-weight="extrabold"
+                                font-family="'Plus Jakarta Sans', sans-serif">India</text>
+
+                            <!-- Singapore Node & Label -->
+                            <circle cx="990" cy="490" r="4" fill="#3b82f6" filter="url(#mapGlow)" />
+                            <circle cx="990" cy="490" r="2" fill="#ffffff" />
+                            <text x="1002" y="494" fill="#e2e8f0" font-size="11" font-weight="bold"
+                                font-family="'Plus Jakarta Sans', sans-serif">Singapore</text>
+
+                            <!-- Australia Node & Label -->
+                            <circle cx="1160" cy="600" r="4" fill="#3b82f6" filter="url(#mapGlow)" />
+                            <circle cx="1160" cy="600" r="2" fill="#ffffff" />
+                            <text x="1172" y="604" fill="#e2e8f0" font-size="11" font-weight="bold"
+                                font-family="'Plus Jakarta Sans', sans-serif">Australia</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 pt-8 border-t border-slate-800 text-center">
+                <div class="space-y-1">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white">250+</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider">Happy Clients</div>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white">850+</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider">Professionals</div>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white">6</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider">Global Regions</div>
+                </div>
+                <div class="space-y-1">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white">99.8%</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider">On-time Delivery</div>
+                </div>
+                <div class="space-y-1 col-span-2 md:col-span-1">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-white">4.9/5</div>
+                    <div class="text-xs text-slate-400 uppercase tracking-wider">Client Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="py-24 bg-white">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">How We Work</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">A proven process that <span
+                        class="text-blue-600">delivers results.</span></h2>
+            </div>
+
+            <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 py-8">
+                <!-- Curved connecting track (Only visible on large screens) -->
+                <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-32 hidden lg:block pointer-events-none z-0">
+                    <svg class="w-full h-full" viewBox="0 0 1200 100" fill="none" preserveAspectRatio="none">
+                        <!-- Background static track -->
+                        <path d="M 100 50 Q 200 15, 300 50 T 500 50 T 700 50 T 900 50 T 1100 50" stroke="#f1f5f9" stroke-width="4" stroke-linecap="round" />
+                        <!-- Glowing active flow line -->
+                        <path d="M 100 50 Q 200 15, 300 50 T 500 50 T 700 50 T 900 50 T 1100 50" stroke="url(#flow-grad)" stroke-width="4" stroke-linecap="round" stroke-dasharray="80 1120">
+                            <animate attributeName="stroke-dashoffset" values="1200;0" dur="6s" repeatCount="indefinite" />
+                        </path>
+                        <!-- Floating energy dot -->
+                        <circle r="7" fill="#2563eb" filter="url(#glow-filter)">
+                            <animateMotion dur="6s" repeatCount="indefinite" path="M 100 50 Q 200 15, 300 50 T 500 50 T 700 50 T 900 50 T 1100 50" />
+                        </circle>
+                        <defs>
+                            <linearGradient id="flow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.1" />
+                                <stop offset="50%" stop-color="#2563eb" stop-opacity="0.8" />
+                                <stop offset="100%" stop-color="#06b6d4" stop-opacity="1" />
+                            </linearGradient>
+                            <filter id="glow-filter" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="4" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+
+                <!-- Milestone Cards -->
+                <div id="milestone-1" class="milestone-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="step-number text-xl font-black text-slate-300 mb-3">01</div>
+                        <div class="icon-container w-10 h-10 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center mb-4">
+                            <i data-lucide="search" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-2">Discover</h4>
+                        <p class="text-slate-600 text-xs leading-relaxed">We understand your business, challenges and goals.</p>
+                    </div>
+                </div>
+
+                <div id="milestone-2" class="milestone-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="step-number text-xl font-black text-slate-300 mb-3">02</div>
+                        <div class="icon-container w-10 h-10 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center mb-4">
+                            <i data-lucide="file-text" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-2">Design</h4>
+                        <p class="text-slate-600 text-xs leading-relaxed">We create the right solution and engagement model for you.</p>
+                    </div>
+                </div>
+
+                <div id="milestone-3" class="milestone-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="step-number text-xl font-black text-slate-300 mb-3">03</div>
+                        <div class="icon-container w-10 h-10 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center mb-4">
+                            <i data-lucide="users" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-2">Build</h4>
+                        <p class="text-slate-600 text-xs leading-relaxed">We assemble and onboard the ideal team with the right skills.</p>
+                    </div>
+                </div>
+
+                <div id="milestone-4" class="milestone-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="step-number text-xl font-black text-slate-300 mb-3">04</div>
+                        <div class="icon-container w-10 h-10 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center mb-4">
+                            <i data-lucide="link" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-2">Integrate</h4>
+                        <p class="text-slate-600 text-xs leading-relaxed">We align tools, workflows and communication seamlessly.</p>
+                    </div>
+                </div>
+
+                <div id="milestone-5" class="milestone-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="step-number text-xl font-black text-slate-300 mb-3">05</div>
+                        <div class="icon-container w-10 h-10 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center mb-4">
+                            <i data-lucide="rocket" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-2">Operate</h4>
+                        <p class="text-slate-600 text-xs leading-relaxed">We deliver with quality, transparency and accountability.</p>
+                    </div>
+                </div>
+
+                <div id="milestone-6" class="milestone-card p-6 rounded-2xl flex flex-col justify-between">
+                    <div>
+                        <div class="step-number text-xl font-black text-slate-300 mb-3">06</div>
+                        <div class="icon-container w-10 h-10 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center mb-4">
+                            <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm mb-2">Optimize</h4>
+                        <p class="text-slate-600 text-xs leading-relaxed">We continuously improve performance and drive more value.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Engagement Models Section -->
+    <section id="engagement-models" class="py-24 bg-slate-50/50 border-t border-slate-100">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest block">Flexible Collaboration</span>
+                <h3 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Tailored Engagement Models</h3>
+                <p class="text-slate-600 text-sm max-w-xl mx-auto leading-relaxed">
+                    We don't sell generic offshore staffing. We deliver flexible global delivery models structured around your business size and operational goals.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Model 1 -->
+                <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-blue-500 hover:shadow-md transition-all">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max">Individual</span>
+                        <h4 class="text-lg font-bold text-slate-900">Dedicated Specialist</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            One dedicated professional (developer, accountant, or admin) working full-time directly under your management.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 mt-6 text-[10px] text-slate-400 font-semibold">Best for targeted tasks</div>
+                </div>
+                <!-- Model 2 -->
+                <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-blue-500 hover:shadow-md transition-all">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max">Co-managed</span>
+                        <h4 class="text-lg font-bold text-slate-900">Dedicated Team</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            A custom team of offshore specialists integrated into your systems. You control the direction; we manage HR and local support.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 mt-6 text-[10px] text-slate-400 font-semibold">Best for continuous workloads</div>
+                </div>
+                <!-- Model 3 -->
+                <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-blue-500 hover:shadow-md transition-all">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-bold text-purple-600 bg-purple-50 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max">Managed</span>
+                        <h4 class="text-lg font-bold text-slate-900">Managed Service Pod</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            A complete delivery team overseen by a Yardlines Delivery Lead who manages project SLAs, training, and QA output.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 mt-6 text-[10px] text-slate-400 font-semibold">Best for complete BPO functions</div>
+                </div>
+                <!-- Model 4 -->
+                <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-blue-500 hover:shadow-md transition-all">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max">Outcome-based</span>
+                        <h4 class="text-lg font-bold text-slate-900">Project-Based</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Defined scope of deliverables and timelines. Yardlines manages design, engineering, execution, and deployment.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 mt-6 text-[10px] text-slate-400 font-semibold">Best for one-off projects</div>
+                </div>
+                <!-- Model 5 -->
+                <div class="glass-card p-6 rounded-3xl flex flex-col justify-between hover:border-blue-500 hover:shadow-md transition-all">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full uppercase tracking-wider block w-max">Enterprise</span>
+                        <h4 class="text-lg font-bold text-slate-900">Build-Operate-Transfer</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            We build your dedicated offshore subsidiary center in India, manage it, and transfer ownership back to you after maturity.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 mt-6 text-[10px] text-slate-400 font-semibold">Best for scaling organizations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator Section -->
+    <section id="roi-calculator" class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Details -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-widest block">Cost Optimization</span>
+                    <h3 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">Calculate Your Global Delivery ROI</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Scale your delivery team while optimizing budgets. Move non-core processes to Yardlines' managed teams and redirect saved capital into growth.
+                    </p>
+                    <div class="p-4 bg-blue-50/50 border border-blue-100/50 rounded-2xl">
+                        <p class="text-xs text-blue-800 font-semibold leading-relaxed">
+                            *Illustrative estimate — actual pricing depends on role, seniority, technical scope, and chosen engagement model.
+                        </p>
+                    </div>
+                </div>
+                <!-- Right Calculator Card -->
+                <div class="lg:col-span-7 bg-white border border-slate-200 shadow-2xl rounded-3xl p-6 sm:p-8 space-y-6">
+                    <div class="space-y-4">
+                        <!-- Salary Slider -->
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <label class="text-xs font-bold text-slate-700 uppercase">Average Local Salary (Annual)</label>
+                                <span class="text-sm font-extrabold text-blue-600" id="salary-val">$90,000</span>
+                            </div>
+                            <input type="range" min="40000" max="200000" step="5000" value="90000" id="salary-range" class="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-blue-600" oninput="updateCalculator()">
+                        </div>
+
+                        <!-- Team Size Slider -->
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <label class="text-xs font-bold text-slate-700 uppercase">Current Team Size (FTEs)</label>
+                                <span class="text-sm font-extrabold text-blue-600" id="team-val">5</span>
+                            </div>
+                            <input type="range" min="1" max="25" step="1" value="5" id="team-range" class="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-blue-600" oninput="updateCalculator()">
+                        </div>
+
+                        <!-- Function Selector -->
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-slate-700 uppercase block">Function Scope</label>
+                            <select id="calc-function" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-blue-600" onchange="updateCalculator()">
+                                <option value="finance">Finance & Accounting (70% Est. Savings)</option>
+                                <option value="tech">Technology & AI (65% Est. Savings)</option>
+                                <option value="ops">Business Operations & Admin (75% Est. Savings)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Calculator outputs -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-100 pt-6">
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                            <div class="text-[10px] text-slate-400 font-bold uppercase">Estimated Current Cost</div>
+                            <div class="text-2xl font-extrabold text-slate-900 mt-1" id="current-cost">$450,000</div>
+                        </div>
+                        <div class="bg-blue-50 border border-blue-100 p-4 rounded-2xl">
+                            <div class="text-[10px] text-blue-700 font-bold uppercase">Estimated Yardlines Cost</div>
+                            <div class="text-2xl font-extrabold text-blue-900 mt-1" id="yardlines-cost">$135,000</div>
+                        </div>
+                    </div>
+
+                    <!-- Highlighted Savings Counter -->
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 rounded-2xl text-white flex items-center justify-between">
+                        <div>
+                            <div class="text-[10px] text-blue-100 font-bold uppercase">Estimated Annual Savings</div>
+                            <div class="text-3xl font-black mt-1" id="savings-cost">$315,000</div>
+                        </div>
+                        <i data-lucide="trending-up" class="w-10 h-10 text-blue-200 opacity-80"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Playbook Lead Magnet Section -->
+    <section id="playbook" class="py-24 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl border border-slate-200/80 shadow-2xl p-8 sm:p-12 relative overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <!-- Text and form -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-widest block">Resource Playbook</span>
+                        <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">Get the Yardlines Global Outsourcing Playbook</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed max-w-xl">
+                            A practical guide to deciding what functions to outsource, structuring remote teams, expected engagement models, data security compliance, and building a governance model.
+                        </p>
+                        
+                        <!-- Mini form inline/stacked -->
+                        <form class="grid grid-cols-1 sm:grid-cols-3 gap-3" onsubmit="event.preventDefault(); alert('Playbook has been sent to your email!');">
+                            <input type="email" id="playbook-email" oninput="syncEmails(this.value)" required placeholder="Enter work email" class="sm:col-span-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600">
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-xs transition-all shadow-md text-center cursor-pointer">
+                                Send My Playbook
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Book cover mock illustration -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-64 h-80 rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-900 shadow-2xl border-l-[12px] border-blue-600 p-6 flex flex-col justify-between text-white transform hover:rotate-2 hover:scale-105 transition-all">
+                            <div class="space-y-4">
+                                <img src="Asserts/yardlines%20logo.png" alt="Yardlines Logo" class="h-8 w-auto object-contain bg-slate-900 p-1.5 rounded-lg border border-slate-850">
+                                <h4 class="text-lg font-extrabold tracking-tight">The Global Outsourcing Playbook</h4>
+                                <p class="text-[9px] text-slate-400 leading-relaxed">
+                                    Governance, Security, scaling models, and implementation frameworks.
+                                </p>
+                            </div>
+                            <div class="border-t border-slate-800 pt-3 flex items-center justify-between text-[8px] text-slate-400 uppercase tracking-widest font-semibold">
+                                <span>First Edition</span>
+                                <span>Yardlines</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Section -->
+    <section id="partners" class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold text-blue-600 uppercase tracking-widest block">Collaborate With Us</span>
+                <h3 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">Partner With Yardlines</h3>
+                <p class="text-slate-600 text-sm max-w-xl mx-auto leading-relaxed">
+                    Expand your client service capability, solve delivery capacity challenges, and unlock agreed commercial benefits without overhead.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="glass-card p-8 rounded-3xl space-y-4 hover:border-blue-500 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Referral Partner</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Refer clients to Yardlines for technology, finance, or back-office staffing. Receive agreed commercial rewards on successful engagements.
+                    </p>
+                </div>
+                <!-- Program 2 -->
+                <div class="glass-card p-8 rounded-3xl space-y-4 hover:border-blue-500 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">Delivery Partner</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        We act as the offshore execution hub for consultancies, accounting firms, and agencies. We provide specialized delivery pods seamlessly.
+                    </p>
+                </div>
+                <!-- Program 3 -->
+                <div class="glass-card p-8 rounded-3xl space-y-4 hover:border-blue-500 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900">White-Label Partner</h4>
+                    <p class="text-slate-600 text-xs leading-relaxed">
+                        Offer software development, bookkeeping, or data entry directly under your brand. Yardlines operates as your silent, offshore back-office team.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <!-- Quote & FAQ Section -->
+    <section id="quote" class="py-24 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Column: Quote Builder -->
+                <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden">
+                    <!-- Header / Progress Area -->
+                    <div class="bg-slate-900 text-white p-8 space-y-4">
+                        <div class="flex items-center justify-between text-xs text-slate-400 font-bold uppercase tracking-widest">
+                            <span>Let's Build Your Solution</span>
+                            <span id="quote-step-indicator">Step 1 of 4</span>
+                        </div>
+                        <div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
+                            <div id="quote-progress-bar" class="w-1/4 h-full bg-blue-500 transition-all duration-300"></div>
+                        </div>
+                        <h3 class="text-2xl font-extrabold" id="quote-step-title">What capability do you need?</h3>
+                    </div>
+
+                    <!-- Form Steps container -->
+                    <form id="quote-wizard-form" class="p-8 space-y-6" onsubmit="handleQuoteSubmit(event)">
+                        <!-- Step 1: Capability selection -->
+                        <div id="quote-step-1" class="space-y-4">
+                            <p class="text-xs text-slate-500 font-medium">Select all operations that apply to your requirements:</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <label class="border border-slate-200 rounded-2xl p-4 flex items-center space-x-3 cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all">
+                                    <input type="checkbox" name="capability" value="technology" class="w-4 h-4 text-blue-600 rounded">
+                                    <div>
+                                        <div class="text-xs font-bold text-slate-800">Technology Solutions</div>
+                                        <div class="text-[10px] text-slate-400">Software engineering, QA, Cloud ops</div>
+                                    </div>
+                                </label>
+                                <label class="border border-slate-200 rounded-2xl p-4 flex items-center space-x-3 cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all">
+                                    <input type="checkbox" name="capability" value="finance" class="w-4 h-4 text-blue-600 rounded">
+                                    <div>
+                                        <div class="text-xs font-bold text-slate-800">Finance & Accounting</div>
+                                        <div class="text-[10px] text-slate-400">Bookkeeping, AP/AR, reconciliation</div>
+                                    </div>
+                                </label>
+                                <label class="border border-slate-200 rounded-2xl p-4 flex items-center space-x-3 cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all">
+                                    <input type="checkbox" name="capability" value="operations" class="w-4 h-4 text-blue-600 rounded">
+                                    <div>
+                                        <div class="text-xs font-bold text-slate-800">Business Operations</div>
+                                        <div class="text-[10px] text-slate-400">Data entry, support, administrative</div>
+                                    </div>
+                                </label>
+                                <label class="border border-slate-200 rounded-2xl p-4 flex items-center space-x-3 cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all">
+                                    <input type="checkbox" name="capability" value="teams" class="w-4 h-4 text-blue-600 rounded">
+                                    <div>
+                                        <div class="text-xs font-bold text-slate-800">Dedicated Teams</div>
+                                        <div class="text-[10px] text-slate-400">Managed pods, developer pools</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Scale selection -->
+                        <div id="quote-step-2" class="space-y-4 hidden">
+                            <p class="text-xs text-slate-500 font-medium">How many specialists do you expect to onboard?</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <label class="border border-slate-200 rounded-2xl p-4 flex items-center space-x-3 cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all">
+                                    <input type="radio" name="scale" value="individual" class="w-4 h-4 text-blue-600">
+                                    <span class="text-xs font-bold text-slate-800">Individual Specialist (1 FTE)</span>
+                                </label>
+                                <label class="border border-slate-200 rounded-2xl p-4 flex items-center space-x-3 cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all">
+                                    <input type="radio" name="scale" value="small" class="w-4 h-4 text-blue-600" checked>
+                                    <span class="text-xs font-bold text-slate-800">Small Delivery Pod (2-5 FTEs)</span>
+                                </label>
+                                <label class="border border-slate-200 rounded-2xl p-4 flex items-center space-x-3 cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all">
+                                    <input type="radio" name="scale" value="large" class="w-4 h-4 text-blue-600">
+                                    <span class="text-xs font-bold text-slate-800">Managed Delivery Team (6-10 FTEs)</span>
+                                </label>
+                                <label class="border border-slate-200 rounded-2xl p-4 flex items-center space-x-3 cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all">
+                                    <input type="radio" name="scale" value="enterprise" class="w-4 h-4 text-blue-600">
+                                    <span class="text-xs font-bold text-slate-800">Scale Operations (10+ FTEs)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Timeline & Requirements -->
+                        <div id="quote-step-3" class="space-y-4 hidden">
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-slate-700 uppercase">When is your starting timeline?</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                    <label class="border border-slate-200 rounded-xl p-3 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all flex items-center justify-center">
+                                        <input type="radio" name="timeline" value="immediate" class="hidden">
+                                        <span class="text-xs font-semibold text-slate-700">Immediately</span>
+                                    </label>
+                                    <label class="border border-slate-200 rounded-xl p-3 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all flex items-center justify-center">
+                                        <input type="radio" name="timeline" value="30days" class="hidden" checked>
+                                        <span class="text-xs font-semibold text-slate-700">Within 30 Days</span>
+                                    </label>
+                                    <label class="border border-slate-200 rounded-xl p-3 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all flex items-center justify-center">
+                                        <input type="radio" name="timeline" value="90days" class="hidden">
+                                        <span class="text-xs font-semibold text-slate-700">1-3 Months</span>
+                                    </label>
+                                    <label class="border border-slate-200 rounded-xl p-3 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/10 transition-all flex items-center justify-center">
+                                        <input type="radio" name="timeline" value="exploring" class="hidden">
+                                        <span class="text-xs font-semibold text-slate-700">Just Exploring</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="space-y-2 pt-2">
+                                <label class="text-xs font-bold text-slate-700 uppercase">Requirements / Scope Details</label>
+                                <textarea rows="3" id="quote-requirements" placeholder="Briefly describe your requirements or tasks to outsource..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Contact info -->
+                        <div id="quote-step-4" class="space-y-4 hidden">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Your Name</label>
+                                    <input type="text" required id="quote-name" placeholder="John Doe" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Work Email</label>
+                                    <input type="email" required id="quote-email" oninput="syncEmails(this.value)" placeholder="john@company.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Company Name</label>
+                                    <input type="text" required id="quote-company" placeholder="Acme Inc." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Country / Headquarters</label>
+                                    <input type="text" required id="quote-country" placeholder="Australia" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wizard Buttons -->
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <button type="button" id="quote-prev-btn" onclick="prevQuoteStep()" class="hidden px-5 py-3 rounded-xl border border-slate-200 bg-white text-slate-700 text-xs font-bold hover:bg-slate-50 transition-all cursor-pointer">
+                                Back
+                            </button>
+                            <span class="flex-1"></span>
+                            <button type="button" id="quote-next-btn" onclick="nextQuoteStep()" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-6 rounded-xl text-xs transition-all shadow-md cursor-pointer text-center">
+                                Continue →
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Column: FAQ -->
+                <div class="lg:col-span-5 space-y-8 lg:pl-4">
+                    <div class="space-y-3">
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-widest block">Clear Answers</span>
+                        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Frequently Asked Questions</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">
+                            Have questions about offshore delivery operations, SLAs, contract structures, or security? We have transparent answers.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- FAQ Item 1 -->
+                        <div class="border border-slate-200 rounded-2xl bg-white overflow-hidden shadow-sm">
+                            <button class="w-full px-6 py-5 flex items-center justify-between text-left font-bold text-slate-800 text-sm focus:outline-none cursor-pointer" onclick="toggleFaq(1)">
+                                <span>How does Yardlines manage timezone synchronization?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-1" class="w-5 h-5 text-slate-400 transition-transform"></i>
+                            </button>
+                            <div id="faq-content-1" class="hidden px-6 pb-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100 pt-3">
+                                Our offshore teams in India align their work schedules to match your local market timeframes (e.g., standard business hours in Australia, UK, or USA). We guarantee a minimum 4-hour overlap period daily for direct collaboration, meetings, and updates.
+                            </div>
+                        </div>
+                        <!-- FAQ Item 2 -->
+                        <div class="border border-slate-200 rounded-2xl bg-white overflow-hidden shadow-sm">
+                            <button class="w-full px-6 py-5 flex items-center justify-between text-left font-bold text-slate-800 text-sm focus:outline-none cursor-pointer" onclick="toggleFaq(2)">
+                                <span>Can we start with a small pilot team?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-2" class="w-5 h-5 text-slate-400 transition-transform"></i>
+                            </button>
+                            <div id="faq-content-2" class="hidden px-6 pb-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100 pt-3">
+                                Absolutely. You can start with a single dedicated specialist or a 2-person co-managed team. We understand B2B requirements require proof of capability, and we support scaling up as workload capacity demands increase.
+                            </div>
+                        </div>
+                        <!-- FAQ Item 3 -->
+                        <div class="border border-slate-200 rounded-2xl bg-white overflow-hidden shadow-sm">
+                            <button class="w-full px-6 py-5 flex items-center justify-between text-left font-bold text-slate-800 text-sm focus:outline-none cursor-pointer" onclick="toggleFaq(3)">
+                                <span>How is client data kept secure?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-3" class="w-5 h-5 text-slate-400 transition-transform"></i>
+                            </button>
+                            <div id="faq-content-3" class="hidden px-6 pb-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100 pt-3">
+                                We implement strict data isolation protocols. All operations are run through secure VPNs and virtual machine workspaces. We sign mutual NDAs, block external USB storage devices on team hardware, and restrict physical access to authorized delivery floors.
+                            </div>
+                        </div>
+                        <!-- FAQ Item 4 -->
+                        <div class="border border-slate-200 rounded-2xl bg-white overflow-hidden shadow-sm">
+                            <button class="w-full px-6 py-5 flex items-center justify-between text-left font-bold text-slate-800 text-sm focus:outline-none cursor-pointer" onclick="toggleFaq(4)">
+                                <span>What is the minimum contract commitment?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-4" class="w-5 h-5 text-slate-400 transition-transform"></i>
+                            </button>
+                            <div id="faq-content-4" class="hidden px-6 pb-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100 pt-3">
+                                Our standard engagement agreements operate on flexible monthly commitments for co-managed resources, or fixed-scope structures for project deliverables. We require a simple 30-day notice period to scale down, adjust capacities, or pause operations.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide-over Service Details Panel -->
+    <div id="service-slideover" class="fixed inset-y-0 right-0 z-50 w-full max-w-lg bg-white border-l border-slate-200 shadow-2xl translate-x-full transition-transform duration-300 ease-in-out flex flex-col hidden">
+        <!-- Slide-over Header -->
+        <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+            <h4 id="slideover-title" class="font-bold text-slate-900 text-lg">Service Details</h4>
+            <button onclick="closeServiceSlideover()" class="text-slate-400 hover:text-slate-700 p-1.5 hover:bg-slate-200 rounded-full transition-all">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+        <!-- Slide-over Body -->
+        <div class="flex-1 p-6 overflow-y-auto space-y-8" id="slideover-content">
+            <!-- Dynamic Content will be injected here by Javascript -->
+        </div>
+
+        <!-- Talk to Expert Form Container (Initially Hidden) -->
+        <div class="flex-1 p-6 overflow-y-auto space-y-6 hidden" id="expert-form-container">
+            <h5 class="text-base font-bold text-slate-900">Talk to Our Expert</h5>
+            <p class="text-xs text-slate-500">Submit your work email and requirement details, and one of our domain experts will reach out to schedule a call.</p>
+            <form onsubmit="handleExpertSubmit(event)" class="space-y-4 pt-2">
+                <div>
+                    <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-700 mb-1.5">Work Email</label>
+                    <input type="email" required id="expert-email" oninput="syncEmails(this.value)" placeholder="you@company.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs text-slate-900 focus:outline-none focus:border-blue-600">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold uppercase tracking-wider text-slate-700 mb-1.5">Requirement Details</label>
+                    <textarea required id="expert-details" rows="5" placeholder="What functions or roles are you looking to scale? Tell us a bit about your timelines and constraints..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs text-slate-900 focus:outline-none focus:border-blue-600"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-xs transition-all shadow-md text-center cursor-pointer">
+                    Submit Request
+                </button>
+                <button type="button" onclick="hideExpertForm()" class="w-full bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-bold py-3 px-4 rounded-xl text-xs transition-all text-center cursor-pointer">
+                    Cancel & Back
+                </button>
+            </form>
+        </div>
+
+        <!-- Slide-over Footer -->
+        <div id="slideover-footer" class="p-6 border-t border-slate-100 bg-slate-50 flex items-center justify-between space-x-3">
+            <button onclick="openQuoteWithService()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl text-xs transition-all shadow-md text-center cursor-pointer">
+                Request a Quote
+            </button>
+            <button onclick="showExpertForm()" class="flex-1 bg-white border border-slate-200 hover:bg-slate-50 text-slate-800 font-semibold py-3 px-4 rounded-xl text-xs transition-all text-center cursor-pointer">
+                Talk to Our Expert
+            </button>
+        </div>
+    </div>
+
+    <footer class="bg-slate-950 text-slate-400 text-sm py-16 border-t border-slate-900">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-5 gap-10">
+            <div class="md:col-span-2 space-y-4">
+                <div class="flex items-center space-x-3">
+                    <img src="Asserts/yardlines%20logo.png" alt="Yardlines Logo"
+                        class="h-11 w-auto object-contain bg-slate-900 p-2 rounded-lg">
+                </div>
+                <p class="text-xs text-slate-500 max-w-sm leading-relaxed">
+                    Globally Managed Solutions. Built to scale technology, finance, and business operations with elite
+                    global teams.
+                </p>
+                <div class="text-xs text-slate-600">
+                    © 2026 Yardlines. All rights reserved.
+                </div>
+                <div class="flex items-center space-x-3 pt-3">
+                    <a href="#" class="w-7 h-7 rounded-full bg-slate-900 hover:bg-blue-600 text-slate-400 hover:text-white flex items-center justify-center transition-all">
+                        <i data-lucide="facebook" class="w-3.5 h-3.5"></i>
+                    </a>
+                    <a href="#" class="w-7 h-7 rounded-full bg-slate-900 hover:bg-pink-600 text-slate-400 hover:text-white flex items-center justify-center transition-all">
+                        <i data-lucide="instagram" class="w-3.5 h-3.5"></i>
+                    </a>
+                    <a href="#" class="w-7 h-7 rounded-full bg-slate-900 hover:bg-blue-700 text-slate-400 hover:text-white flex items-center justify-center transition-all">
+                        <i data-lucide="linkedin" class="w-3.5 h-3.5"></i>
+                    </a>
+                    <a href="#" class="w-7 h-7 rounded-full bg-slate-900 hover:bg-sky-500 text-slate-400 hover:text-white flex items-center justify-center transition-all">
+                        <i data-lucide="twitter" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-4">Solutions</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#solutions" class="hover:text-blue-400">Technology</a></li>
+                    <li><a href="#solutions" class="hover:text-blue-400">Finance & Accounting</a></li>
+                    <li><a href="#solutions" class="hover:text-blue-400">Business Operations</a></li>
+                    <li><a href="#solutions" class="hover:text-blue-400">Dedicated Teams</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-4">Company</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#how-it-works" class="hover:text-blue-400">How We Work</a></li>
+                    <li><a href="#why-us" class="hover:text-blue-400">Why Yardlines</a></li>
+                    <li><a href="#quote" class="hover:text-blue-400">Request a Quote</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-xs uppercase tracking-wider mb-4">Global Base</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Serving businesses worldwide from our delivery base in India with round-the-clock agility.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget Window in Bottom Right Corner -->
+    <div id="ai-modal"
+        class="fixed bottom-24 right-6 z-50 hidden w-[360px] sm:w-[390px] h-[480px] bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden flex-col">
+        <div class="px-5 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center">
+                    <i data-lucide="bot" class="w-4 h-4"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-900 text-sm">Yardlines AI Assistant</h4>
+                    <p class="text-[10px] text-blue-600 font-medium">Online & Ready to Help</p>
+                </div>
+            </div>
+            <button onclick="toggleAiModal()" class="text-slate-400 hover:text-slate-700 p-1">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+        <div id="chat-messages" class="flex-1 p-5 overflow-y-auto space-y-4 text-xs bg-slate-50/50">
+            <div class="flex items-start space-x-3">
+                <div
+                    class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 font-bold">
+                    AI</div>
+                <div class="bg-white p-3 rounded-2xl text-slate-700 max-w-[85%] border border-slate-200 shadow-sm">
+                    Hi, I'm Yardlines AI. Tell me what capability or service you're trying to scale and I'll guide you
+                    to the right solution.
+                </div>
+            </div>
+        </div>
+        <div class="p-2.5 bg-white border-t border-slate-100 flex flex-wrap gap-1.5">
+            <button onclick="sendAiPrompt('I need a technology team')"
+                class="text-[10px] bg-slate-50 hover:bg-slate-100 text-slate-700 px-2.5 py-1.5 rounded-full border border-slate-200 transition-all font-medium">Technology
+                Team</button>
+            <button onclick="sendAiPrompt('I need finance & accounting support')"
+                class="text-[10px] bg-slate-50 hover:bg-slate-100 text-slate-700 px-2.5 py-1.5 rounded-full border border-slate-200 transition-all font-medium">Finance
+                Support</button>
+            <button onclick="sendAiPrompt('I want to reduce operational workload')"
+                class="text-[10px] bg-slate-50 hover:bg-slate-100 text-slate-700 px-2.5 py-1.5 rounded-full border border-slate-200 transition-all font-medium">Reduce
+                Workload</button>
+        </div>
+        <div class="p-3.5 bg-white border-t border-slate-100 flex items-center space-x-2">
+            <input type="text" id="ai-input" placeholder="Type your requirement..."
+                class="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600">
+            <button onclick="handleAiSend()"
+                class="bg-blue-600 hover:bg-blue-700 text-white p-2.5 rounded-xl transition-all shadow-md">
+                <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button in Bottom Right Corner -->
+    <button onclick="toggleAiModal()"
+        class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-2xl flex items-center justify-center transition-all hover:scale-110 active:scale-95 ring-4 ring-blue-500/20 cursor-pointer"
+        id="floating-chat-btn" aria-label="AI Assistant Chat Button">
+        <!-- Premium 3D Robot Head SVG -->
+        <svg viewBox="0 0 100 100" class="w-10 h-10 drop-shadow-md">
+            <defs>
+                <linearGradient id="headsetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#4f46e5" />
+                    <stop offset="100%" stop-color="#2563eb" />
+                </linearGradient>
+                <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#0f172a" />
+                    <stop offset="100%" stop-color="#1e293b" />
+                </linearGradient>
+                <radialGradient id="headShadow" cx="50%" cy="50%" r="50%">
+                    <stop offset="60%" stop-color="#000000" stop-opacity="0.1" />
+                    <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+                </radialGradient>
+                <linearGradient id="glossGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25" />
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                </linearGradient>
+            </defs>
+            <path d="M 38 78 Q 50 72 62 78 L 65 88 Q 50 82 35 88 Z" fill="#e2e8f0" />
+            <path d="M 43 77 Q 50 74 57 77 L 58 83 Q 50 80 42 83 Z" fill="#cbd5e1" />
+            <path d="M 16 48 A 38 38 0 0 1 84 48" fill="none" stroke="url(#headsetGrad)" stroke-width="6"
+                stroke-linecap="round" />
+            <rect x="20" y="28" width="60" height="48" rx="24" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+            <ellipse cx="50" cy="74" rx="22" ry="5" fill="url(#headShadow)" />
+            <rect x="25" y="34" width="50" height="34" rx="17" fill="url(#screenGrad)" />
+            <path d="M 27 46 A 15 15 0 0 1 73 46 Z" fill="url(#glossGrad)" />
+            <ellipse cx="40" cy="50" rx="3.5" ry="6" fill="#38bdf8" />
+            <ellipse cx="60" cy="50" rx="3.5" ry="6" fill="#38bdf8" />
+            <path d="M 46 59 Q 50 62 54 59" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" />
+            <rect x="13" y="42" width="10" height="18" rx="5" fill="url(#headsetGrad)" />
+            <rect x="16" y="46" width="4" height="10" rx="2" fill="#93c5fd" />
+            <rect x="77" y="42" width="10" height="18" rx="5" fill="url(#headsetGrad)" />
+            <rect x="80" y="46" width="4" height="10" rx="2" fill="#93c5fd" />
+            <path d="M 18 56 Q 22 68 36 68" fill="none" stroke="url(#headsetGrad)" stroke-width="3"
+                stroke-linecap="round" />
+            <circle cx="36" cy="68" r="3.5" fill="#1e293b" />
+        </svg>
+        <!-- Online indicator dot -->
+        <span
+            class="absolute top-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full animate-pulse"></span>
+    </button>
+
+    <script>
+        // Initialize Lucide Icons
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // AI Modal Toggle
+        function toggleAiModal() {
+            const modal = document.getElementById('ai-modal');
+            if (modal) {
+                modal.classList.toggle('hidden');
+                modal.classList.toggle('flex');
+            }
+        }
+
+        // Synced Email Field handler
+        function syncEmails(val) {
+            const emailFields = ['quote-email', 'expert-email', 'playbook-email'];
+            emailFields.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && el.value !== val) {
+                    el.value = val;
+                }
+            });
+        }
+
+        // Solutions Explorer Data
+        const solutionsData = {
+            tech: {
+                title: "Technology Solutions",
+                color: "blue",
+                services: [
+                    { id: "software-dev", name: "Software Development", desc: "Custom enterprise applications and backend systems engineered for scalability." },
+                    { id: "web-mobile", name: "Web & Mobile Development", desc: "Premium, responsive web portals and native iOS/Android applications." },
+                    { id: "ai-ml", name: "AI & Machine Learning", desc: "Intelligent automation, customized AI agents, LLM integrations, and modeling." },
+                    { id: "data-analytics", name: "Data Engineering & Analytics", desc: "Data pipelines, warehousing, ETL architectures, and business intelligence." },
+                    { id: "qa-testing", name: "QA & Testing Solutions", desc: "Automated testing pipelines, load testing, and manual quality control checks." },
+                    { id: "cloud-devops", name: "Cloud & DevOps Operations", desc: "CI/CD setups, cloud migrations, Kubernetes orchestrations, and monitoring." }
+                ]
+            },
+            finance: {
+                title: "Finance & Accounting",
+                color: "emerald",
+                services: [
+                    { id: "bookkeeping", name: "Bookkeeping Services", desc: "Daily transaction recording, ledger maintenance, and bank reconciliation." },
+                    { id: "ap", name: "Accounts Payable", desc: "Vendor invoice matching, payment processing setup, and expense logging." },
+                    { id: "ar", name: "Accounts Receivable", desc: "Client invoicing, payment tracking, collections, and balance reconciliations." },
+                    { id: "reconciliation", name: "Bank Reconciliation", desc: "Discrepancy identification, transaction matching, and cash flow reports." },
+                    { id: "reporting", name: "Management Reporting", desc: "Month-end closures, cash flow statements, P&L generation, and forecasting." },
+                    { id: "finance-ops", name: "Finance Operations Support", desc: "Complete transactional finance operations managed by certified accountants." }
+                ]
+            },
+            ops: {
+                title: "Business Operations",
+                color: "purple",
+                services: [
+                    { id: "back-office", name: "Back-office Operations", desc: "Workflow support, verification checks, data updates, and report aggregation." },
+                    { id: "data-entry", name: "Data Entry & Processing", desc: "High-accuracy transaction entry, form processing, and database cleaning." },
+                    { id: "document-processing", name: "Document Digitization", desc: "Optical character recognition (OCR) verification, formatting, and archives." },
+                    { id: "customer-support", name: "Customer Support Teams", desc: "Multichannel helpdesk, ticket management, live chat, and email support." },
+                    { id: "admin-support", name: "Administrative Support", desc: "Calendar management, inbox filtering, travel booking, and operations assistance." }
+                ]
+            },
+            teams: {
+                title: "Dedicated Teams & Pods",
+                color: "amber",
+                services: [
+                    { id: "dev-team", name: "Dedicated Developers", desc: "Pre-screened software developers working exclusively under your guidance." },
+                    { id: "finance-team", name: "Dedicated Finance Specialists", desc: "Managed pods of accountants and analysts integrated with your workflows." },
+                    { id: "qa-team", name: "QA & AI Testing Teams", desc: "Scalable quality assurance pods for continuous application deployments." },
+                    { id: "managed-pod", name: "Managed Service Pods", desc: "Self-governing teams with a Yardlines delivery lead running your operation." },
+                    { id: "offshore-setup", name: "Offshore Team Setup", desc: "End-to-end recruitment, workspace provisioning, and local compliance in India." }
+                ]
+            }
+        };
+
+        const serviceDetailData = {
+            "bookkeeping": {
+                title: "Bookkeeping Services",
+                tag: "Finance & Accounting",
+                desc: "Professional transaction logging and ledger maintenance to keep your books investor-ready and tax-compliant.",
+                deliverables: "Certified bookkeeping team + standard operating processes + verified logs + dashboard reports.",
+                whatWeDo: ["Daily transaction recording & categorization", "General ledger maintenance & audits", "Bank & credit card reconciliation", "Accounts reconciliation & variance analysis", "Month-end and year-end ledger closures", "Financial data preparation for CPA review"],
+                whoItFor: ["Growing startups needing accurate records", "SMEs outsourcing administrative tasks", "Accounting firms scaling back-office capacity", "Businesses seeking standardized accounting models"]
+            },
+            "software-dev": {
+                title: "Software Development",
+                tag: "Technology Solutions",
+                desc: "Custom software engineering delivered by dedicated engineers built for your unique product architecture.",
+                deliverables: "Dedicated engineering pods + daily standups + CI/CD integrations + complete source code ownership.",
+                whatWeDo: ["Custom backend & API architecture design", "Frontend web applications development", "Database modeling and optimization", "Legacy codebase migrations", "Ongoing maintenance & code refactoring", "DevSecOps setup & security auditing"],
+                whoItFor: ["SaaS startups scaling engineering velocity", "Enterprise companies migrating legacy codebases", "Tech firms needing specialized coding capacity", "Agencies white-labeling delivery pods"]
+            },
+            "data-entry": {
+                title: "Data Entry & Processing",
+                tag: "Business Operations",
+                desc: "High-accuracy, rapid turnaround data processing to streamline back-office operations.",
+                deliverables: "Trained ops specialists + data security controls + high-speed processing + daily output audits.",
+                whatWeDo: ["High-speed alpha-numeric entry", "Database cleansing and standardization", "Forms & claims digitalization", "Document upload and record linking", "Metadata tagging and categorization", "Quality control validations"],
+                whoItFor: ["Logistics and real estate companies", "E-commerce brands handling inventory sheets", "Healthcare clinics digitizing records", "Professional service firms processing large datasets"]
+            },
+            "managed-pod": {
+                title: "Managed Service Pods",
+                tag: "Dedicated Teams",
+                desc: "Complete operational functions delivered through self-governing pods led by Yardlines delivery managers.",
+                deliverables: "Full functional delivery + Yardlines Team Lead + defined SLA targets + monthly business reviews.",
+                whatWeDo: ["Dedicated specialists onboarding", "Tools alignment and workflow standardizations", "SLA setup and performance metrics", "Daily task queuing and quality assurance", "Resource scaling and load balancing", "Continuous improvement reporting"],
+                whoItFor: ["Mid-market firms outsourcing full teams", "Growing enterprises seeking turn-key operations", "Businesses looking to scale without manager overhead"]
+            }
+        };
+
+        // Industry Details Data for Slideover
+        const industryDetailData = {
+            saas: {
+                title: "SaaS & Technology",
+                tag: "Industry Solutions",
+                desc: "Scale your SaaS business without scaling operational overhead. We build custom technology delivery capacity, bookkeeping, and customer support pods.",
+                deliverables: "Integrated technology pods + AP/AR bookkeeping + multichannel helpdesk support.",
+                whatWeDo: [
+                    "Dedicated developer pods (React, Node, Python, AWS)",
+                    "Automated QA & continuous integration pipelines",
+                    "Monthly recurring revenue (MRR) ledger bookkeeping",
+                    "Technical support & customer helpdesk SLAs",
+                    "DevOps pipeline orchestration"
+                ],
+                whoItFor: [
+                    "Growth-stage SaaS platforms scaling velocity",
+                    "Bootstrapped startups optimizing developer budgets",
+                    "Enterprise tech firms delegating technical operations"
+                ]
+            },
+            financial: {
+                title: "Financial Services",
+                tag: "Industry Solutions",
+                desc: "High-compliance delivery solutions tailored for fintechs, brokerage platforms, and investment firms.",
+                deliverables: "Certified finance professionals + secure transaction matching + custom ledger reporting.",
+                whatWeDo: [
+                    "Compliance audits and record checking",
+                    "Daily transaction reconciliation workflows",
+                    "AP/AR processing for partner networks",
+                    "Fintech support and customer onboarding verifications",
+                    "Management reporting preparation"
+                ],
+                whoItFor: [
+                    "Fintech firms outsourcing back-office compliance",
+                    "Lending platforms standardizing credit log updates",
+                    "Wealth management firms automating client reporting"
+                ]
+            },
+            accounting: {
+                title: "Professional Services",
+                tag: "Industry Solutions",
+                desc: "Expand your advisory capabilities. Yardlines operates as your silent, high-efficiency delivery partner.",
+                deliverables: "White-label back-office teams + certified accountants + direct project delivery capacity.",
+                whatWeDo: [
+                    "White-label bookkeeping and month-end closes",
+                    "Tax return preparation and data checking",
+                    "Client payroll accounting setup",
+                    "Administrative assistant tasks (calendars, email support)",
+                    "Database audits and document management"
+                ],
+                whoItFor: [
+                    "Accounting firms scaling capacity during peak tax seasons",
+                    "Recruitment consultancies outsourcing payroll logging",
+                    "Management consulting firms requiring financial analytics pods"
+                ]
+            },
+            ecommerce: {
+                title: "E-commerce & Retail",
+                tag: "Industry Solutions",
+                desc: "Keep up with transaction volumes. We handle order matching, vendor payouts, inventory logs, and customer support.",
+                deliverables: "High-accuracy transaction entry + inventory reconciliations + customer live-chat support.",
+                whatWeDo: [
+                    "Multichannel customer support (Chat, email, tickets)",
+                    "Order processing and logistics updates",
+                    "Vendor invoice matching and accounts payable",
+                    "Sales ledger bank reconciliations",
+                    "Product listing and data entry updates"
+                ],
+                whoItFor: [
+                    "Direct-to-consumer brands experiencing high order volumes",
+                    "Multi-location retail brands standardizing supply chain billing",
+                    "Marketplace platform sellers automating catalog updates"
+                ]
+            },
+            logistics: {
+                title: "Logistics & Transport",
+                tag: "Industry Solutions",
+                desc: "Streamline dispatch logs, shipment entries, bills of lading, and accounts receivable operations.",
+                deliverables: "High-speed document entry + automated dispatch logs + invoice tracking.",
+                whatWeDo: [
+                    "Bill of lading digitization and archiving",
+                    "Carrier invoice matching and verification",
+                    "Customer shipment status support desk",
+                    "Driver payment log matches",
+                    "Fleet data processing and database entry"
+                ],
+                whoItFor: [
+                    "Freight forwarding firms standardizing documents",
+                    "Third-party logistics (3PL) centers outsourcing invoice logs",
+                    "Courier services scaling customer tracking support"
+                ]
+            },
+            startups: {
+                title: "Startups & Scaleups",
+                tag: "Industry Solutions",
+                desc: "Conserve your capital. Build a flexible offshore pod to handle software dev, bookkeeping, and customer support.",
+                deliverables: "Pre-screened tech specialists + transactional accountants + administrative pods.",
+                whatWeDo: [
+                    "Minimum viable product (MVP) software development",
+                    "Basic bookkeeping & cap table updates",
+                    "Technical support ticket handling",
+                    "Lead generation & data scraping operations",
+                    "Founder administrative support"
+                ],
+                whoItFor: [
+                    "Seed and Series A startups preserving runway",
+                    "Product teams launching rapid experiments",
+                    "Founders delegating repetitive operations"
+                ]
+            }
+        };
+
+        function goToSolutionTab(tabKey) {
+            switchTab(tabKey);
+            const sec = document.getElementById('solutions');
+            if (sec) {
+                sec.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function openIndustryDetails(industryId) {
+            const slideover = document.getElementById('service-slideover');
+            const contentContainer = document.getElementById('slideover-content');
+            const titleContainer = document.getElementById('slideover-title');
+            if (!slideover || !contentContainer || !titleContainer) return;
+
+            // Reset expert form visibility
+            hideExpertForm();
+
+            const details = industryDetailData[industryId];
+            if (!details) return;
+
+            titleContainer.innerText = details.title;
+
+            let html = `
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full uppercase tracking-wider">${details.tag}</span>
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">${details.desc}</p>
+                    </div>
+                    
+                    <div class="border-t border-slate-100 pt-5">
+                        <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">Key Focus Areas</h5>
+                        <ul class="space-y-2.5 text-xs text-slate-600">
+            `;
+
+            details.whatWeDo.forEach(item => {
+                html += `
+                    <li class="flex items-start space-x-2">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                        <span>${item}</span>
+                    </li>
+                `;
+            });
+
+            html += `
+                        </ul>
+                    </div>
+                    
+                    <div class="border-t border-slate-100 pt-5">
+                        <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">Target Profile</h5>
+                        <ul class="space-y-2.5 text-xs text-slate-600">
+            `;
+
+            details.whoItFor.forEach(item => {
+                html += `
+                    <li class="flex items-start space-x-2">
+                        <i data-lucide="users" class="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5"></i>
+                        <span>${item}</span>
+                    </li>
+                `;
+            });
+
+            html += `
+                        </ul>
+                    </div>
+                    
+                    <div class="border-t border-slate-100 pt-5 bg-blue-50/40 p-4 rounded-2xl border border-blue-100/50">
+                        <h5 class="text-xs font-bold text-blue-800 uppercase tracking-wider mb-2">How We Support It</h5>
+                        <p class="text-slate-700 text-xs leading-relaxed font-medium">${details.deliverables}</p>
+                    </div>
+                </div>
+            `;
+
+            contentContainer.innerHTML = html;
+            slideover.dataset.activeService = details.title;
+
+            slideover.classList.remove('hidden');
+            setTimeout(() => {
+                slideover.classList.remove('translate-x-full');
+            }, 10);
+
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        }
+
+        function switchTab(tabKey) {
+            const tabs = ['tech', 'finance', 'ops', 'teams'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if (!btn) return;
+                if (t === tabKey) {
+                    btn.className = "px-6 py-3 rounded-full text-sm font-bold border border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-500/10 hover:scale-105 transition-all cursor-pointer flex items-center space-x-2";
+                } else {
+                    btn.className = "px-6 py-3 rounded-full text-sm font-semibold border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all cursor-pointer flex items-center space-x-2";
+                }
+            });
+            renderSolutions(tabKey);
+        }
+
+        // Render functions
+        function renderSolutions(tabKey) {
+            const data = solutionsData[tabKey];
+            const container = document.getElementById('solutions-content');
+            if (!container) return;
+
+            let html = `
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fadeIn">
+            `;
+
+            data.services.forEach(service => {
+                html += `
+                    <div onclick="openServiceDetails('${service.id}', '${tabKey}')" 
+                        class="glass-card p-6 rounded-2xl flex flex-col justify-between hover:border-blue-500 hover:shadow-lg transition-all group cursor-pointer">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-blue-50/80 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                <i data-lucide="arrow-right" class="w-4 h-4 text-blue-600 transition-transform group-hover:rotate-45"></i>
+                            </div>
+                            <h4 class="text-base font-bold text-slate-900 mb-2">${service.name}</h4>
+                            <p class="text-slate-500 text-xs leading-relaxed mb-4">${service.desc}</p>
+                        </div>
+                        <div class="text-blue-600 font-bold text-xs flex items-center space-x-1">
+                            <span>View Delivery Model</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        }
+
+        function showExpertForm() {
+            const content = document.getElementById('slideover-content');
+            const form = document.getElementById('expert-form-container');
+            const footer = document.getElementById('slideover-footer');
+            if (content && form && footer) {
+                content.classList.add('hidden');
+                form.classList.remove('hidden');
+                footer.classList.add('hidden');
+            }
+        }
+
+        function hideExpertForm() {
+            const content = document.getElementById('slideover-content');
+            const form = document.getElementById('expert-form-container');
+            const footer = document.getElementById('slideover-footer');
+            if (content && form && footer) {
+                content.classList.remove('hidden');
+                form.classList.add('hidden');
+                footer.classList.remove('hidden');
+            }
+        }
+
+        function handleExpertSubmit(event) {
+            event.preventDefault();
+            const email = document.getElementById('expert-email').value;
+            alert(`Thank you! Your request has been submitted. Our expert will contact you at ${email} shortly.`);
+            event.target.reset();
+            hideExpertForm();
+            closeServiceSlideover();
+        }
+
+        function openServiceDetails(serviceId, tabKey) {
+            const slideover = document.getElementById('service-slideover');
+            const contentContainer = document.getElementById('slideover-content');
+            const titleContainer = document.getElementById('slideover-title');
+            if (!slideover || !contentContainer || !titleContainer) return;
+
+            hideExpertForm();
+
+            let details = serviceDetailData[serviceId];
+            if (!details) {
+                const serviceItem = solutionsData[tabKey].services.find(s => s.id === serviceId);
+                details = {
+                    title: serviceItem.name,
+                    tag: solutionsData[tabKey].title,
+                    desc: serviceItem.desc,
+                    deliverables: `Dedicated ${solutionsData[tabKey].title} specialists + defined processes + standard reporting + quality control reviews.`,
+                    whatWeDo: [
+                        `Standardized operational execution`,
+                        `Workflow integration with client systems`,
+                        `Quality checks and error monitoring`,
+                        `Daily output reporting`,
+                        `Process documentation maintenance`
+                    ],
+                    whoItFor: [
+                        `Businesses looking to reduce operational overhead`,
+                        `Teams scaling capacity during peak periods`,
+                        `Organizations standardizing their back-office processes`
+                    ]
+                };
+            }
+
+            titleContainer.innerText = details.title;
+
+            let html = `
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-wider">${details.tag}</span>
+                        <p class="text-slate-600 text-sm mt-3 leading-relaxed">${details.desc}</p>
+                    </div>
+                    
+                    <div class="border-t border-slate-100 pt-5">
+                        <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">What We Do</h5>
+                        <ul class="space-y-2.5 text-xs text-slate-600">
+            `;
+
+            details.whatWeDo.forEach(item => {
+                html += `
+                    <li class="flex items-start space-x-2">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                        <span>${item}</span>
+                    </li>
+                `;
+            });
+
+            html += `
+                        </ul>
+                    </div>
+                    
+                    <div class="border-t border-slate-100 pt-5">
+                        <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">Who It's For</h5>
+                        <ul class="space-y-2.5 text-xs text-slate-600">
+            `;
+
+            details.whoItFor.forEach(item => {
+                html += `
+                    <li class="flex items-start space-x-2">
+                        <i data-lucide="users" class="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5"></i>
+                        <span>${item}</span>
+                    </li>
+                `;
+            });
+
+            html += `
+                        </ul>
+                    </div>
+                    
+                    <div class="border-t border-slate-100 pt-5">
+                        <h5 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-3">How Yardlines Delivers It</h5>
+                        <div class="grid grid-cols-2 gap-3 text-[11px] text-slate-600">
+                            <div class="flex items-center space-x-2 bg-slate-50 p-2 rounded-lg"><span class="font-bold text-blue-600 text-xs">01</span><span>Understand Needs</span></div>
+                            <div class="flex items-center space-x-2 bg-slate-50 p-2 rounded-lg"><span class="font-bold text-blue-600 text-xs">02</span><span>Configure Model</span></div>
+                            <div class="flex items-center space-x-2 bg-slate-50 p-2 rounded-lg"><span class="font-bold text-blue-600 text-xs">03</span><span>Assign Specialists</span></div>
+                            <div class="flex items-center space-x-2 bg-slate-50 p-2 rounded-lg"><span class="font-bold text-blue-600 text-xs">04</span><span>Integrate Workflows</span></div>
+                            <div class="flex items-center space-x-2 bg-slate-50 p-2 rounded-lg"><span class="font-bold text-blue-600 text-xs">05</span><span>Operate & Monitor</span></div>
+                            <div class="flex items-center space-x-2 bg-slate-50 p-2 rounded-lg"><span class="font-bold text-blue-600 text-xs">06</span><span>Report & Optimize</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t border-slate-100 pt-5 bg-blue-50/40 p-4 rounded-2xl border border-blue-100/50">
+                        <h5 class="text-xs font-bold text-blue-800 uppercase tracking-wider mb-2">What You Receive</h5>
+                        <p class="text-slate-700 text-xs leading-relaxed font-medium">${details.deliverables}</p>
+                    </div>
+                </div>
+            `;
+
+            contentContainer.innerHTML = html;
+            slideover.dataset.activeService = details.title;
+
+            slideover.classList.remove('hidden');
+            setTimeout(() => {
+                slideover.classList.remove('translate-x-full');
+            }, 10);
+
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        }
+
+        function closeServiceSlideover() {
+            const slideover = document.getElementById('service-slideover');
+            if (!slideover) return;
+            slideover.classList.add('translate-x-full');
+            setTimeout(() => {
+                slideover.classList.add('hidden');
+            }, 300);
+        }
+
+        function openQuoteWithService() {
+            closeServiceSlideover();
+            const quoteSection = document.getElementById('quote');
+            if (quoteSection) {
+                quoteSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            goToQuoteStep(1);
+        }
+
+        // ROI Calculator Logic
+        function updateCalculator() {
+            const salaryRange = document.getElementById('salary-range');
+            const teamRange = document.getElementById('team-range');
+            const calcFunction = document.getElementById('calc-function');
+
+            if (!salaryRange || !teamRange || !calcFunction) return;
+
+            const salary = parseInt(salaryRange.value);
+            const teamSize = parseInt(teamRange.value);
+            const functionType = calcFunction.value;
+
+            // Update range slider labels
+            document.getElementById('salary-val').innerText = `$${salary.toLocaleString()}`;
+            document.getElementById('team-val').innerText = teamSize;
+
+            let savingsRate = 0.70; // Default Finance
+            if (functionType === 'tech') savingsRate = 0.65;
+            if (functionType === 'ops') savingsRate = 0.75;
+
+            const currentCost = salary * teamSize;
+            const savings = currentCost * savingsRate;
+            const yardlinesCost = currentCost - savings;
+
+            document.getElementById('current-cost').innerText = `$${currentCost.toLocaleString()}`;
+            document.getElementById('yardlines-cost').innerText = `$${yardlinesCost.toLocaleString()}`;
+            document.getElementById('savings-cost').innerText = `$${savings.toLocaleString()}`;
+        }
+
+        // FAQ Accordion logic
+        function toggleFaq(id) {
+            const content = document.getElementById(`faq-content-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            if (!content || !icon) return;
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Quote Wizard logic
+        let currentQuoteStep = 1;
+        const totalQuoteSteps = 4;
+
+        const quoteTitles = [
+            "What capability do you need?",
+            "How many specialists do you expect to onboard?",
+            "When is your starting timeline?",
+            "Tell us how to contact you"
+        ];
+
+        function goToQuoteStep(step) {
+            currentQuoteStep = step;
+            updateQuoteWizard();
+        }
+
+        function updateQuoteWizard() {
+            // Hide all steps
+            for (let i = 1; i <= totalQuoteSteps; i++) {
+                const el = document.getElementById(`quote-step-${i}`);
+                if (el) el.classList.add('hidden');
+            }
+
+            // Show current step
+            const currentEl = document.getElementById(`quote-step-${currentQuoteStep}`);
+            if (currentEl) currentEl.classList.remove('hidden');
+
+            // Update Progress Bar
+            const bar = document.getElementById('quote-progress-bar');
+            if (bar) {
+                const percent = (currentQuoteStep / totalQuoteSteps) * 100;
+                bar.style.width = `${percent}%`;
+            }
+
+            // Update Indicators & Titles
+            const ind = document.getElementById('quote-step-indicator');
+            if (ind) ind.innerText = `Step ${currentQuoteStep} of ${totalQuoteSteps}`;
+
+            const title = document.getElementById('quote-step-title');
+            if (title) title.innerText = quoteTitles[currentQuoteStep - 1];
+
+            // Toggle back button visibility
+            const prevBtn = document.getElementById('quote-prev-btn');
+            if (prevBtn) {
+                if (currentQuoteStep > 1) {
+                    prevBtn.classList.remove('hidden');
+                } else {
+                    prevBtn.classList.add('hidden');
+                }
+            }
+
+            // Update next button label
+            const nextBtn = document.getElementById('quote-next-btn');
+            if (nextBtn) {
+                if (currentQuoteStep === totalQuoteSteps) {
+                    nextBtn.innerText = "Get My Proposal →";
+                    nextBtn.type = "submit";
+                } else {
+                    nextBtn.innerText = "Continue →";
+                    nextBtn.type = "button";
+                }
+            }
+        }
+
+        function nextQuoteStep() {
+            if (currentQuoteStep < totalQuoteSteps) {
+                currentQuoteStep++;
+                updateQuoteWizard();
+            } else {
+                // Submit form
+                const form = document.getElementById('quote-wizard-form');
+                if (form) {
+                    form.requestSubmit();
+                }
+            }
+        }
+
+        function prevQuoteStep() {
+            if (currentQuoteStep > 1) {
+                currentQuoteStep--;
+                updateQuoteWizard();
+            }
+        }
+
+        function handleQuoteSubmit(event) {
+            event.preventDefault();
+            alert("Thank you! Your customized proposal request has been submitted successfully. A Yardlines Solutions Advisor will contact you within 24 hours.");
+            goToQuoteStep(1);
+            event.target.reset();
+        }
+
+        // AI Advisor guided flow logic
+        let advisorStep = 0;
+        let advisorSelections = {};
+
+        function sendAiPrompt(text) {
+            appendMessage(text, 'user');
+            
+            setTimeout(() => {
+                if (text.includes("technology team") || text.toLowerCase().includes("tech")) {
+                    advisorSelections.type = "Technology";
+                    advisorStep = 1;
+                    appendMessage("Excellent choice. Let's customize a Tech solution. What type of business do you operate? (e.g. SaaS Startup, Enterprise, Logistics, Retail)", "ai");
+                } else if (text.includes("finance") || text.toLowerCase().includes("accounting")) {
+                    advisorSelections.type = "Finance & Accounting";
+                    advisorStep = 1;
+                    appendMessage("Got it. We support AP, AR, reconciliations, and bookkeeping. What industry is your business in? (e.g. Accounting Firm, Multi-location retail, Startups)", "ai");
+                } else if (text.includes("reduce operational") || text.toLowerCase().includes("operations")) {
+                    advisorSelections.type = "Business Operations";
+                    advisorStep = 1;
+                    appendMessage("Reducing workload is our specialty. What operations are we looking to delegate? (e.g. Data Entry, Document Processing, Multichannel Customer Support)", "ai");
+                } else {
+                    if (advisorStep === 1) {
+                        advisorSelections.businessType = text;
+                        advisorStep = 2;
+                        appendMessage("Understood. Approximately how many people handle these tasks currently in your local team? (e.g. 1-2, 3-5, 5+)", "ai");
+                    } else if (advisorStep === 2) {
+                        advisorSelections.headcount = text;
+                        advisorStep = 3;
+                        appendMessage("Almost done. What is your preferred start timeline? (e.g., Immediately, Next 30 days, Just exploring)", "ai");
+                    } else if (advisorStep === 3) {
+                        advisorSelections.timeline = text;
+                        advisorStep = 4;
+                        
+                        let modelRec = "Managed Pod (2-3 FTEs)";
+                        if (advisorSelections.headcount.includes("1-2")) modelRec = "Dedicated Specialist (1 FTE)";
+                        if (advisorSelections.headcount.includes("5+")) modelRec = "Managed Delivery Team (5+ FTEs)";
+                        
+                        let savingsEst = "65% - 75%";
+                        
+                        appendMessage(`
+                            <strong>Recommended Solution:</strong><br>
+                            - <strong>Operational Model:</strong> Yardlines Dedicated ${advisorSelections.type} ${modelRec}<br>
+                            - <strong>Estimated Savings:</strong> ${savingsEst} relative to local hiring costs.<br>
+                            - <strong>Key Roles included:</strong> Certified ${advisorSelections.type} Specialists + Yardlines Delivery Lead.<br><br>
+                            Would you like us to generate a customized PDF proposal? Let's transition directly to our <a href="#quote" onclick="toggleAiModal()" class="text-blue-600 font-bold underline">Interactive Quote Builder</a> to finalize!
+                        `, "ai");
+                        advisorStep = 0; // reset
+                    } else {
+                        appendMessage("I'm here to build your global team. Choose one of the quick options below or tell me what functions you are looking to scale.", "ai");
+                    }
+                }
+            }, 800);
+        }
+
+        function handleAiSend() {
+            const input = document.getElementById('ai-input');
+            if (!input.value.trim()) return;
+            const text = input.value;
+            input.value = '';
+            sendAiPrompt(text);
+        }
+
+        function appendMessage(text, sender) {
+            const container = document.getElementById('chat-messages');
+            if (!container) return;
+            const div = document.createElement('div');
+            if (sender === 'user') {
+                div.className = 'flex items-start justify-end space-x-3';
+                div.innerHTML = `
+                    <div class="bg-blue-600 text-white p-3.5 rounded-2xl max-w-[85%] shadow-sm">${text}</div>
+                    <div class="w-6 h-6 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center flex-shrink-0 font-bold text-[10px]">You</div>
+                `;
+            } else {
+                div.className = 'flex items-start space-x-3';
+                div.innerHTML = `
+                    <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-[10px]">YL</div>
+                    <div class="bg-white p-3.5 rounded-2xl text-slate-700 max-w-[85%] border border-slate-200 shadow-sm leading-relaxed">${text}</div>
+                `;
+            }
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // Initialize state on load
+        window.addEventListener('load', () => {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+            switchTab('tech');
+            updateCalculator();
+
+            // How We Work Milestone animation loop
+            let currentMilestone = 1;
+            function animateMilestones() {
+                for (let i = 1; i <= 6; i++) {
+                    const el = document.getElementById(`milestone-${i}`);
+                    if (el) {
+                        el.classList.remove('active-step');
+                    }
+                }
+                const activeEl = document.getElementById(`milestone-${currentMilestone}`);
+                if (activeEl) {
+                    activeEl.classList.add('active-step');
+                }
+                currentMilestone = currentMilestone === 6 ? 1 : currentMilestone + 1;
+            }
+            // Run animation step every 1000ms to align with the 6s travel duration of the SVG pulse
+            setInterval(animateMilestones, 1000);
+            animateMilestones();
+        });
+    </script>
+</body>
+
+</html>
