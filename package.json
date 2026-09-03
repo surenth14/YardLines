@@ -1,0 +1,17 @@
+{
+  "name": "yard-lines",
+  "version": "1.0.0",
+  "description": "Yardlines - Globally Managed Solutions",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'No build step required for static site'",
+    "start": "npx serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.3.1"
+  }
+}
