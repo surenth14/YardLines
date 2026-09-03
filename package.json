@@ -1,0 +1,23 @@
+{
+  "name": "yardlines",
+  "version": "1.0.0",
+  "description": "Yardlines - Globally Managed Solutions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surenth14/YardLines.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/surenth14/YardLines/issues"
+  },
+  "homepage": "https://github.com/surenth14/YardLines#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
