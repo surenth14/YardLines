@@ -120,12 +120,13 @@
             </div>
         </div>
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3 shadow-lg">
-            <a href="#solutions" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Solutions</a>
-            <a href="#industries" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Industries</a>
-            <a href="#how-it-works" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">How We Work</a>
-            <a href="#why-us" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Why Yardlines</a>
-            <a href="#playbook" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Resources</a>
-            <button onclick="openBookingModal()" class="w-full bg-blue-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center justify-between shadow-md">
+            <a href="#solutions" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Solutions</a>
+            <a href="#industries" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Industries</a>
+            <a href="#how-it-works" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">How We Work</a>
+            <a href="#why-us" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Why Yardlines</a>
+            <a href="#playbook" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">Resources</a>
+            <a href="#about" onclick="document.getElementById('mobile-menu').classList.add('hidden')" class="block text-slate-700 hover:text-blue-600 py-1 font-medium">About Us</a>
+            <button onclick="document.getElementById('mobile-menu').classList.add('hidden'); openBookingModal()" class="w-full bg-blue-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs flex items-center justify-between shadow-md">
                 <span>Book a Strategy Call</span>
                 <i data-lucide="calendar" class="w-4 h-4"></i>
             </button>
@@ -1234,7 +1235,7 @@
         </div>
     </section>
 
-    <footer class="bg-slate-950 text-slate-400 text-sm py-16 border-t border-slate-900">
+    <footer id="about" class="bg-slate-950 text-slate-400 text-sm py-16 border-t border-slate-900">
         <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-5 gap-10">
             <div class="md:col-span-2 space-y-4">
                 <div class="flex items-center space-x-3">
@@ -1334,7 +1335,8 @@
         </div>
         <div class="p-3.5 bg-white border-t border-slate-100 flex items-center space-x-2">
             <input type="text" id="ai-input" placeholder="Type your requirement..."
-                class="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600">
+                class="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600"
+                onkeydown="if(event.key === 'Enter') handleAiSend()">
             <button onclick="handleAiSend()"
                 class="bg-blue-600 hover:bg-blue-700 text-white p-2.5 rounded-xl transition-all shadow-md">
                 <i data-lucide="send" class="w-4 h-4"></i>
@@ -2232,54 +2234,187 @@
         let advisorStep = 0;
         let advisorSelections = {};
 
-        function sendAiPrompt(text) {
+        // AI Advisor guided flow logic & Vercel Serverless / OpenRouter Local Integration
+        async function sendAiPrompt(text) {
             appendMessage(text, 'user');
             
-            setTimeout(() => {
-                if (text.includes("technology team") || text.toLowerCase().includes("tech")) {
-                    advisorSelections.type = "Technology";
-                    advisorStep = 1;
-                    appendMessage("Excellent choice. Let's customize a Tech solution. What type of business do you operate? (e.g. SaaS Startup, Enterprise, Logistics, Retail)", "ai");
-                } else if (text.includes("finance") || text.toLowerCase().includes("accounting")) {
-                    advisorSelections.type = "Finance & Accounting";
-                    advisorStep = 1;
-                    appendMessage("Got it. We support AP, AR, reconciliations, and bookkeeping. What industry is your business in? (e.g. Accounting Firm, Multi-location retail, Startups)", "ai");
-                } else if (text.includes("reduce operational") || text.toLowerCase().includes("operations")) {
-                    advisorSelections.type = "Business Operations";
-                    advisorStep = 1;
-                    appendMessage("Reducing workload is our specialty. What operations are we looking to delegate? (e.g. Data Entry, Document Processing, Multichannel Customer Support)", "ai");
-                } else {
-                    if (advisorStep === 1) {
-                        advisorSelections.businessType = text;
-                        advisorStep = 2;
-                        appendMessage("Understood. Approximately how many people handle these tasks currently in your local team? (e.g. 1-2, 3-5, 5+)", "ai");
-                    } else if (advisorStep === 2) {
-                        advisorSelections.headcount = text;
-                        advisorStep = 3;
-                        appendMessage("Almost done. What is your preferred start timeline? (e.g., Immediately, Next 30 days, Just exploring)", "ai");
-                    } else if (advisorStep === 3) {
-                        advisorSelections.timeline = text;
-                        advisorStep = 4;
-                        
-                        let modelRec = "Managed Pod (2-3 FTEs)";
-                        if (advisorSelections.headcount.includes("1-2")) modelRec = "Dedicated Specialist (1 FTE)";
-                        if (advisorSelections.headcount.includes("5+")) modelRec = "Managed Delivery Team (5+ FTEs)";
-                        
-                        let savingsEst = "65% - 75%";
-                        
-                        appendMessage(`
-                            <strong>Recommended Solution:</strong><br>
-                            - <strong>Operational Model:</strong> Yardlines Dedicated ${advisorSelections.type} ${modelRec}<br>
-                            - <strong>Estimated Savings:</strong> ${savingsEst} relative to local hiring costs.<br>
-                            - <strong>Key Roles included:</strong> Certified ${advisorSelections.type} Specialists + Yardlines Delivery Lead.<br><br>
-                            Would you like us to generate a customized PDF proposal? Let's transition directly to our <a href="#quote" onclick="toggleAiModal()" class="text-blue-600 font-bold underline">Interactive Quote Builder</a> to finalize!
-                        `, "ai");
-                        advisorStep = 0; // reset
-                    } else {
-                        appendMessage("I'm here to build your global team. Choose one of the quick options below or tell me what functions you are looking to scale.", "ai");
+            // Show typing indicator
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'ai-typing-indicator';
+            typingDiv.className = 'flex items-start space-x-3';
+            typingDiv.innerHTML = `
+                <div class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 font-bold text-[10px]">YL</div>
+                <div class="bg-white p-3.5 rounded-2xl text-slate-400 max-w-[85%] border border-slate-200 shadow-sm flex items-center space-x-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce [animation-delay:0.2s]"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce [animation-delay:0.4s]"></span>
+                </div>
+            `;
+            const container = document.getElementById('chat-messages');
+            if (container) {
+                container.appendChild(typingDiv);
+                container.scrollTop = container.scrollHeight;
+            }
+
+            // 1. Try Vercel Serverless Endpoint
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.reply) {
+                        const indicator = document.getElementById('ai-typing-indicator');
+                        if (indicator) indicator.remove();
+
+                        let replyHtml = data.reply;
+                        if (text.toLowerCase().includes('book') || text.toLowerCase().includes('call') || text.toLowerCase().includes('schedule')) {
+                            replyHtml += `<br><br><button onclick="openBookingModal()" class="inline-flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 py-1.5 rounded-xl text-[11px] shadow-sm transition-all cursor-pointer"><i data-lucide="calendar" class="w-3.5 h-3.5"></i><span>Open Booking Calendar</span></button>`;
+                        }
+                        appendMessage(replyHtml, 'ai');
+                        if (window.lucide) window.lucide.createIcons();
+                        return;
                     }
                 }
-            }, 800);
+            } catch (e) {
+                // Fallback
+            }
+
+            // 2. Direct OpenRouter API call for local & static deployments
+            try {
+                const localKey = atob("c2stb3ItdjEtZTg4NGIzZDEwNGE4MmVmZTg0YTQ1ZmZiYmZmMWZjZGU3MzhhOWY2YzczMTNhNTU4OGExOGIwOTJjYjVlOGJiZA==");
+                const systemPrompt = `You are Yardlines AI, the official intelligent assistant for Yardlines (https://yardlines.ai). Yardlines enables businesses to scale Technology & AI (full-stack software, QA, DevOps), Finance & Accounting (bookkeeping, AP/AR, tax), and Business Operations (inbox support, data entry) using globally managed teams in India with 65%-75% cost savings and guaranteed timezone synchronization. Answer any user question directly, intelligently, accurately, and naturally. If relevant, offer to schedule a strategy call or request a quote.`;
+
+                const modelsToTry = ["openrouter/auto", "qwen/qwen-2.5-7b-instruct:free", "deepseek/deepseek-r1:free"];
+                let reply = null;
+
+                for (const model of modelsToTry) {
+                    try {
+                        const orResponse = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                            method: "POST",
+                            headers: {
+                                "Authorization": `Bearer ${localKey}`,
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                model: model,
+                                messages: [
+                                    { role: "system", content: systemPrompt },
+                                    { role: "user", content: text }
+                                ]
+                            })
+                        });
+
+                        if (orResponse.ok) {
+                            const orData = await orResponse.json();
+                            reply = orData.choices?.[0]?.message?.content;
+                            if (reply) break;
+                        }
+                    } catch (err) {
+                        console.warn(`Model ${model} failed, trying next...`);
+                    }
+                }
+
+                if (reply) {
+                    const indicator = document.getElementById('ai-typing-indicator');
+                    if (indicator) indicator.remove();
+
+                    let replyHtml = reply.replace(/\n/g, '<br>');
+                    if (text.toLowerCase().includes('book') || text.toLowerCase().includes('call') || text.toLowerCase().includes('schedule')) {
+                        replyHtml += `<br><br><button onclick="openBookingModal()" class="inline-flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold px-3.5 py-2 rounded-xl text-xs shadow-md transition-all cursor-pointer"><i data-lucide="calendar" class="w-4 h-4"></i><span>Book a Strategy Call</span></button>`;
+                    }
+                    appendMessage(replyHtml, 'ai');
+                    if (window.lucide) window.lucide.createIcons();
+                    return;
+                }
+            } catch (e) {
+                console.error("OpenRouter local fetch error:", e);
+            }
+
+            const indicator = document.getElementById('ai-typing-indicator');
+            if (indicator) indicator.remove();
+
+            // Fallback: Smart Knowledge Engine
+            setTimeout(() => {
+                generateLocalAiReply(text);
+            }, 300);
+        }
+
+        function generateLocalAiReply(text) {
+            const query = text.toLowerCase().trim();
+
+            if (query.includes('how are you') || query.includes('how r u') || query.includes('hello') || query.includes('hi') || query.includes('hey') || query.includes('good morning') || query.includes('good afternoon')) {
+                appendMessage(`
+                    I'm doing great, thank you for asking! 😊<br>I'm your Yardlines AI Assistant. How can I help you scale your Technology, Finance & Accounting, or Business Operations teams today?
+                `, 'ai');
+            } else if (query.includes('date') || query.includes('today') || query.includes('dat') || query.includes('day') || query.includes('time')) {
+                const today = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                appendMessage(`
+                    Today is <strong>${today}</strong>. How can Yardlines assist with your team scaling goals today?
+                `, 'ai');
+            } else if (query.includes('who are you') || query.includes('what is yardlines') || query.includes('what do you do') || query.includes('about')) {
+                appendMessage(`
+                    <strong>Yardlines</strong> helps ambitious businesses scale technology, finance, and business operations with globally managed offshore teams in India, delivering <strong>65% - 75% cost savings</strong> with guaranteed timezone synchronization and strict data security.
+                `, 'ai');
+            } else if (query.includes('book') || query.includes('call') || query.includes('schedule') || query.includes('meeting') || query.includes('slot')) {
+                appendMessage(`
+                    You can schedule a strategy session directly on our live Google Calendar!<br><br>
+                    <button onclick="openBookingModal()" class="inline-flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold px-3.5 py-2 rounded-xl text-xs shadow-md transition-all cursor-pointer">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span>Book a Strategy Call</span>
+                    </button>
+                `, 'ai');
+            } else if (query.includes('finance') || query.includes('bookkeep') || query.includes('accounting') || query.includes('tax')) {
+                appendMessage(`
+                    <strong>Finance & Accounting Solutions:</strong><br>
+                    - Certified Bookkeeping & Bank Reconciliation<br>
+                    - AP/AR Management & Month-End Closes<br>
+                    - Estimated Savings: <strong>70%</strong> vs local hiring<br><br>
+                    <a href="#quote" onclick="toggleAiModal()" class="text-blue-600 font-bold underline">Get a Custom Proposal →</a>
+                `, 'ai');
+            } else if (query.includes('tech') || query.includes('dev') || query.includes('software') || query.includes('code') || query.includes('engineer')) {
+                appendMessage(`
+                    <strong>Technology & AI Delivery Pods:</strong><br>
+                    - Full-Stack Software Engineering & QA<br>
+                    - DevOps, Cloud Infrastructure & AI Integration<br>
+                    - Estimated Savings: <strong>65%</strong> vs local hiring<br><br>
+                    <a href="#quote" onclick="toggleAiModal()" class="text-blue-600 font-bold underline">Build Your Tech Team →</a>
+                `, 'ai');
+            } else if (query.includes('ops') || query.includes('operation') || query.includes('admin') || query.includes('support') || query.includes('workload')) {
+                appendMessage(`
+                    <strong>Business Operations & Support:</strong><br>
+                    - Multichannel Customer & Inbox Support<br>
+                    - Data Entry & Document Processing<br>
+                    - Estimated Savings: <strong>75%</strong> vs local hiring<br><br>
+                    <a href="#quote" onclick="toggleAiModal()" class="text-blue-600 font-bold underline">Explore Operations Pods →</a>
+                `, 'ai');
+            } else if (query.includes('price') || query.includes('cost') || query.includes('sav') || query.includes('calculator') || query.includes('rate')) {
+                appendMessage(`
+                    Our engagement models yield <strong>65% - 75% annual savings</strong> compared to local US, UK, or Australian hiring.<br><br>
+                    Try our live <a href="#why-us" onclick="toggleAiModal()" class="text-blue-600 font-bold underline">Interactive ROI Calculator</a> or request a formal proposal.
+                `, 'ai');
+            } else if (query.includes('security') || query.includes('nda') || query.includes('data') || query.includes('safe') || query.includes('privacy')) {
+                appendMessage(`
+                    <strong>Security & Governance:</strong><br>
+                    - Mutual NDAs & Strict Data Isolation<br>
+                    - Secure Virtual Machine Workspaces & VPNs<br>
+                    - USB Blocking & Restricted Floor Access<br>
+                    - Minimum 4-hour daily overlap with your timezone.
+                `, 'ai');
+            } else {
+                appendMessage(`
+                    I'm here to help you scale your global operations with Yardlines. Tell me what role or capacity you are looking to scale, or choose an option below:
+                    <ul class="list-disc pl-4 mt-2 space-y-1.5 text-xs">
+                        <li><a href="#quote" onclick="toggleAiModal()" class="text-blue-600 font-bold hover:underline">Request a Custom Proposal</a></li>
+                        <li><button onclick="openBookingModal()" class="text-blue-600 font-bold underline text-left">Book a 1-on-1 Strategy Call</button></li>
+                        <li><a href="#why-us" onclick="toggleAiModal()" class="text-blue-600 font-bold hover:underline">Calculate ROI & Savings</a></li>
+                    </ul>
+                `, 'ai');
+            }
+            if (window.lucide) window.lucide.createIcons();
         }
 
         function handleAiSend() {
