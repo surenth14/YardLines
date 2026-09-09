@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yardlines — Corporate Brochure & Managed Teams Overview</title>
+    <link rel="icon" type="image/png" href="Asserts/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        yardblue: '#0066ff',
+                        yardnavy: '#0b0f19',
+                        yardcard: '#ffffff',
+                        yardteal: '#0d9488',
+                        yardcyan: '#06b6d4',
+                        yardgreen: '#10b981',
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0f19;
+            color: #0f172a;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .a4-container {
+            width: 210mm;
+            height: 297mm;
+            max-width: 100%;
+            margin: 0 auto;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            box-sizing: border-box;
+        }
+
+        @media print {
+            body {
+                background: #ffffff;
+            }
+            .a4-container {
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        .gradient-banner {
+            background: linear-gradient(135deg, #0b0f19 0%, #0052cc 50%, #0066ff 100%);
+        }
+
+        .blue-gradient-text {
+            background: linear-gradient(135deg, #0066ff 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pill-badge {
+            background: rgba(0, 102, 255, 0.08);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+        }
+
+        .country-flag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: 9999px;
+            background: #f8fafc;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body class="py-6 px-4 flex flex-col items-center min-h-screen justify-center">
+
+    <!-- Action Bar for Web Viewing & Printing -->
+    <div class="no-print mb-4 flex items-center justify-between w-full max-w-[210mm] bg-[#0b0f19] text-white p-3.5 rounded-2xl border border-slate-800 shadow-xl">
+        <div class="flex items-center space-x-3">
+            <span class="w-3 h-3 rounded-full bg-[#0066ff] animate-pulse"></span>
+            <span class="text-xs font-bold tracking-wider uppercase text-slate-200">Yardlines Official A4 Corporate Brochure</span>
+        </div>
+        <div class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-1.5 text-xs text-slate-300 hover:text-white px-3 py-1.5 rounded-lg border border-slate-700 transition">
+                <i data-lucide="globe" class="w-4 h-4 text-blue-400"></i>
+                <span>Main Website</span>
+            </a>
+            <button onclick="window.print()" class="flex items-center space-x-1.5 bg-[#0066ff] hover:bg-blue-600 text-white text-xs font-bold py-1.5 px-4 rounded-xl transition-all shadow-md">
+                <i data-lucide="printer" class="w-4 h-4"></i>
+                <span>Print / Save as PDF</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ONE PAGE A4 CANVAS (210mm x 297mm) -->
+    <div class="a4-container flex flex-col justify-between p-6 bg-white text-slate-900 border border-slate-200">
+        
+        <!-- TOP DECORATIVE STRIP -->
+        <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#0b0f19] via-[#0066ff] to-[#06b6d4]"></div>
+
+        <!-- HEADER SECTION WITH ORIGINAL LOGO -->
+        <header class="pt-1 pb-3 border-b border-slate-100 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="Asserts/yardlines%20logo.png" alt="Yardlines" class="h-12 w-auto object-contain">
+            </div>
+
+            <div class="text-right">
+                <div class="text-[11px] font-extrabold tracking-wider text-[#0066ff] uppercase">Globally Managed Operations</div>
+                <div class="flex items-center justify-end space-x-1.5 mt-1">
+                    <span class="country-flag">🇦🇺 Australia</span>
+                    <span class="country-flag">🇬🇧 UK</span>
+                    <span class="country-flag">🇺🇸 USA</span>
+                    <span class="country-flag bg-blue-50 text-blue-700 border-blue-200">🇮🇳 India Hub</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- TAGLINE & MAIN HEADLINE HERO BANNER -->
+        <section class="mt-3 text-center gradient-banner text-white rounded-2xl p-5 relative overflow-hidden shadow-lg border border-slate-800">
+            <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-blue-400/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute -left-12 -top-12 w-48 h-48 bg-cyan-400/10 rounded-full blur-2xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-cyan-300 text-[10px] font-bold tracking-widest uppercase mb-2">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-cyan-400"></i>
+                <span>Turnkey Offshore Operations Partner</span>
+            </div>
+
+            <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-white uppercase leading-none">
+                MANAGED TEAMS. <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-emerald-300">MEASURABLE IMPACT.</span>
+            </h1>
+
+            <p class="mt-1.5 text-xs sm:text-sm font-bold text-blue-100 tracking-wide italic">
+                “Your Operations. Our People. One Team.”
+            </p>
+
+            <p class="mt-2.5 text-xs text-slate-200 max-w-xl mx-auto leading-relaxed font-normal">
+                Yardlines connects Australian, UK, and US SME decision-makers with dedicated, skilled, and fully managed offshore teams in India—seamlessly integrated into your daily tools, workflows, and culture to reduce costs and boost scale.
+            </p>
+        </section>
+
+        <!-- PERFORMANCE METRICS (ORIGINAL STATS) -->
+        <section class="grid grid-cols-4 gap-2.5 my-3">
+            <div class="bg-blue-50/80 border border-blue-200 rounded-xl p-2.5 text-center">
+                <div class="text-xl font-black text-[#0066ff]">65% - 75%</div>
+                <div class="text-[10px] font-bold text-slate-600 uppercase tracking-wider mt-0.5">Annual Savings</div>
+            </div>
+            <div class="bg-emerald-50/80 border border-emerald-200 rounded-xl p-2.5 text-center">
+                <div class="text-xl font-black text-emerald-700">&lt; 14 Days</div>
+                <div class="text-[10px] font-bold text-slate-600 uppercase tracking-wider mt-0.5">Deployment Time</div>
+            </div>
+            <div class="bg-cyan-50/80 border border-cyan-200 rounded-xl p-2.5 text-center">
+                <div class="text-xl font-black text-cyan-800">99.8%</div>
+                <div class="text-[10px] font-bold text-slate-600 uppercase tracking-wider mt-0.5">On-Time SLA</div>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-center">
+                <div class="text-xl font-black text-slate-900">100%</div>
+                <div class="text-[10px] font-bold text-slate-600 uppercase tracking-wider mt-0.5">Managed & NDA Safe</div>
+            </div>
+        </section>
+
+        <!-- 3 CORE FUNCTIONAL PILLARS (ORIGINAL SERVICES) -->
+        <section class="mb-3">
+            <div class="flex items-center justify-between mb-2">
+                <h2 class="text-xs font-extrabold tracking-wider uppercase text-slate-500 flex items-center gap-1.5">
+                    <i data-lucide="layers" class="w-3.5 h-3.5 text-[#0066ff]"></i>
+                    <span>Core Operational Solutions</span>
+                </h2>
+                <span class="text-[10px] font-bold text-[#0066ff] bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">Vetted Top 2% India Talent</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2.5">
+                <!-- Tech & AI -->
+                <div class="border border-slate-200 rounded-xl p-3 bg-slate-50/50">
+                    <div class="p-2 bg-blue-100/80 rounded-lg text-[#0066ff] w-fit mb-2">
+                        <i data-lucide="cpu" class="w-4 h-4"></i>
+                    </div>
+                    <h3 class="text-xs font-bold text-slate-900">Technology & AI</h3>
+                    <p class="text-[10.5px] text-slate-600 leading-snug mt-1">
+                        Full-stack software dev, QA testing, DevOps, cloud engineering, and custom AI integration.
+                    </p>
+                </div>
+
+                <!-- Finance & Accounting -->
+                <div class="border border-slate-200 rounded-xl p-3 bg-slate-50/50">
+                    <div class="p-2 bg-emerald-100/80 rounded-lg text-emerald-700 w-fit mb-2">
+                        <i data-lucide="calculator" class="w-4 h-4"></i>
+                    </div>
+                    <h3 class="text-xs font-bold text-slate-900">Finance & Accounting</h3>
+                    <p class="text-[10.5px] text-slate-600 leading-snug mt-1">
+                        Bookkeeping, AP/AR management, reconciliations, financial reporting & Xero/QuickBooks ops.
+                    </p>
+                </div>
+
+                <!-- Business Operations -->
+                <div class="border border-slate-200 rounded-xl p-3 bg-slate-50/50">
+                    <div class="p-2 bg-cyan-100/80 rounded-lg text-cyan-700 w-fit mb-2">
+                        <i data-lucide="headphones" class="w-4 h-4"></i>
+                    </div>
+                    <h3 class="text-xs font-bold text-slate-900">Business Operations</h3>
+                    <p class="text-[10.5px] text-slate-600 leading-snug mt-1">
+                        24/7 customer support, data management, virtual admin, logistics & e-commerce support.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE YARDLINES DIFFERENCE COMPARISON MATRIX -->
+        <section class="mb-3">
+            <h2 class="text-xs font-extrabold tracking-wider uppercase text-slate-500 mb-1.5 flex items-center gap-1.5">
+                <i data-lucide="sliders" class="w-3.5 h-3.5 text-[#0066ff]"></i>
+                <span>The Offshore Model Comparison</span>
+            </h2>
+
+            <div class="grid grid-cols-3 gap-2">
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-center">
+                    <div class="text-[11px] font-bold text-slate-500 uppercase">Freelancers</div>
+                    <div class="text-[10px] text-slate-500 mt-1 space-y-1">
+                        <div>❌ Zero local management</div>
+                        <div>❌ High attrition & flight risk</div>
+                        <div>❌ Unverified IP & data security</div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-center">
+                    <div class="text-[11px] font-bold text-slate-500 uppercase">Traditional BPO</div>
+                    <div class="text-[10px] text-slate-500 mt-1 space-y-1">
+                        <div>❌ Rigid, scripted call-center ops</div>
+                        <div>❌ Disconnected culture</div>
+                        <div>❌ Opaque markups</div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-[#0b0f19] to-slate-900 border border-blue-500/40 text-white rounded-xl p-2.5 text-center shadow-md">
+                    <div class="text-[11px] font-black text-cyan-300 uppercase flex items-center justify-center gap-1">
+                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#0066ff]"></i>
+                        Yardlines Managed Teams
+                    </div>
+                    <div class="text-[10px] text-slate-200 mt-1 space-y-1 font-medium">
+                        <div>✓ Dedicated team + On-site TL</div>
+                        <div>✓ Embedded in Slack, Teams & SOPs</div>
+                        <div>✓ Predictable monthly pricing</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLOSING BANNER WITH EXACT REQUIRED STATEMENT & CONTACT INFO (MOVED ABOVE) -->
+        <section class="my-2.5 bg-[#0b0f19] text-white rounded-2xl p-4 border border-slate-800 relative overflow-hidden shadow-lg">
+            <div class="flex items-center justify-between">
+                <div class="pr-3">
+                    <p class="text-[10px] font-bold text-cyan-400 uppercase tracking-widest">The Yardlines Commitment</p>
+                    <h3 class="text-sm sm:text-base font-extrabold text-white mt-0.5 leading-snug">
+                        “We don’t just provide staff. We become an extension of your team.”
+                    </h3>
+                </div>
+
+                <div class="text-right shrink-0 border-l border-slate-800 pl-4">
+                    <div class="text-[11px] font-extrabold text-white">Scale Operations Today</div>
+                    <div class="text-[10px] font-bold text-cyan-400 mt-0.5">www.yard-lines.com</div>
+                    <a href="https://calendar.app.google/vgqoFzgrgRGcsjuHA" target="_blank" class="inline-flex items-center gap-1 text-[10px] font-bold text-[#0066ff] bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded-lg mt-1 transition">
+                        <span>Book Strategy Call</span>
+                        <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4-STEP OPERATIONAL FLOW -->
+        <section class="mb-2.5">
+            <h2 class="text-xs font-extrabold tracking-wider uppercase text-slate-500 mb-1.5 flex items-center gap-1.5">
+                <i data-lucide="workflow" class="w-3.5 h-3.5 text-[#0066ff]"></i>
+                <span>4-Step Seamless Integration Journey</span>
+            </h2>
+
+            <div class="grid grid-cols-4 gap-2">
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5">
+                    <div class="w-5 h-5 rounded-full bg-[#0b0f19] text-white text-[10px] font-bold flex items-center justify-center mb-1">1</div>
+                    <div class="text-[11px] font-bold text-slate-900">1. Discover & Scope</div>
+                    <div class="text-[10px] text-slate-600 mt-0.5 leading-tight">Analyze roles, skill criteria & timezone overlap.</div>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5">
+                    <div class="w-5 h-5 rounded-full bg-[#0066ff] text-white text-[10px] font-bold flex items-center justify-center mb-1">2</div>
+                    <div class="text-[11px] font-bold text-slate-900">2. Match & Vet</div>
+                    <div class="text-[10px] text-slate-600 mt-0.5 leading-tight">Select top 2% candidates with domain testing.</div>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5">
+                    <div class="w-5 h-5 rounded-full bg-cyan-700 text-white text-[10px] font-bold flex items-center justify-center mb-1">3</div>
+                    <div class="text-[11px] font-bold text-slate-900">3. Onboard & SOPs</div>
+                    <div class="text-[10px] text-slate-600 mt-0.5 leading-tight">Setup hardware, NDAs, security & work channels.</div>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-2.5">
+                    <div class="w-5 h-5 rounded-full bg-emerald-700 text-white text-[10px] font-bold flex items-center justify-center mb-1">4</div>
+                    <div class="text-[11px] font-bold text-slate-900">4. Manage & Scale</div>
+                    <div class="text-[10px] text-slate-600 mt-0.5 leading-tight">On-ground team lead supervision & KPI audits.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECURITY & GOVERNANCE FOOTER -->
+        <footer class="mt-auto bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="shield-check" class="w-4 h-4 text-[#0066ff]"></i>
+                <span class="text-[11px] font-bold text-slate-800">Enterprise Security & Compliance:</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[10px] text-slate-600 font-semibold">
+                <span>🔒 Mutual NDAs</span>
+                <span>💻 Secure Virtual Machines & VPNs</span>
+                <span>🛡️ Restricted Floor Access</span>
+                <span>⚡ 4+ Hr Overlap</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
